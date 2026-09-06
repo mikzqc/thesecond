@@ -16,6 +16,9 @@
         body {
             background-color: #f4f7f6;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* Navigation Bar */
@@ -27,6 +30,9 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
@@ -48,10 +54,33 @@
             text-decoration: none;
             font-weight: 500;
             transition: opacity 0.3s ease;
+            padding-bottom: 4px;
         }
 
         nav a:hover {
             opacity: 0.8;
+        }
+
+        /* Active Tab Indicator */
+        nav a.active {
+            font-weight: bold;
+            border-bottom: 2px solid white;
+        }
+
+        /* Tab Content Sections */
+        .tab-section {
+            display: none; /* Hide all sections by default */
+            animation: fadeIn 0.4s ease-in-out;
+            flex: 1; /* Pushes footer down */
+        }
+
+        .tab-section.active {
+            display: block; /* Show only the active section */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Hero Section */
@@ -155,7 +184,7 @@
             color: white;
             text-align: center;
             padding: 2rem;
-            margin-top: 2rem;
+            margin-top: auto; /* Keeps footer at bottom */
         }
 
         /* Modal Overlay */
@@ -223,56 +252,108 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Medicines</a></li>
-                <li><a href="#">Supplements</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#" class="nav-link active" onclick="openTab(event, 'home')">Home</a></li>
+                <li><a href="#" class="nav-link" onclick="openTab(event, 'medicines')">Medicines</a></li>
+                <li><a href="#" class="nav-link" onclick="openTab(event, 'supplements')">Supplements</a></li>
+                <li><a href="#" class="nav-link" onclick="openTab(event, 'contact')">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>Your Health, Delivered Safely</h1>
-        <p>Browse our professional selection of over-the-counter medications and daily supplements. Certified and trusted.</p>
-    </section>
-
-    <section class="container">
-        <h2 class="section-title">Featured Medications</h2>
+    <main>
         
-        <div class="grid">
-            <div class="card">
-                <div class="product-icon">💊</div>
-                <h3>Paracetamol 500mg</h3>
-                <p class="description">Fast-acting relief for mild to moderate pain and reduction of fever.</p>
-                <div class="price">$5.99</div>
-                <button class="btn" onclick="triggerTestAlert()">Buy Now</button>
-            </div>
-
-            <div class="card">
-                <div class="product-icon">🧴</div>
-                <h3>Advanced Antiseptic Cream</h3>
-                <p class="description">First aid for minor cuts, scrapes, and burns to help prevent infection.</p>
-                <div class="price">$8.49</div>
-                <button class="btn" onclick="triggerTestAlert()">Buy Now</button>
-            </div>
-
-            <div class="card">
-                <div class="product-icon">🧪</div>
-                <h3>Vitamin C Complex</h3>
-                <p class="description">Daily immune system support with essential vitamins and antioxidants.</p>
-                <div class="price">$12.99</div>
-                <button class="btn" onclick="triggerTestAlert()">Buy Now</button>
-            </div>
+        <div id="home" class="tab-section active">
+            <section class="hero">
+                <h1>Your Health, Delivered Safely</h1>
+                <p>Browse our professional selection of over-the-counter medications and daily supplements. Certified and trusted.</p>
+            </section>
             
-            <div class="card">
-                <div class="product-icon">🌿</div>
-                <h3>Allergy Relief Tablets</h3>
-                <p class="description">Non-drowsy 24-hour relief from indoor and outdoor allergies.</p>
-                <div class="price">$14.50</div>
-                <button class="btn" onclick="triggerTestAlert()">Buy Now</button>
-            </div>
+            <section class="container">
+                <h2 class="section-title">Featured This Week</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="product-icon">💊</div>
+                        <h3>Paracetamol 500mg</h3>
+                        <p class="description">Fast-acting relief for mild to moderate pain and reduction of fever.</p>
+                        <div class="price">$5.99</div>
+                        <button class="btn" onclick="triggerTestAlert()">Buy Now</button>
+                    </div>
+                    <div class="card">
+                        <div class="product-icon">🧴</div>
+                        <h3>Advanced Antiseptic Cream</h3>
+                        <p class="description">First aid for minor cuts, scrapes, and burns to help prevent infection.</p>
+                        <div class="price">$8.49</div>
+                        <button class="btn" onclick="triggerTestAlert()">Buy Now</button>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
+
+        <div id="medicines" class="tab-section">
+            <section class="container">
+                <h2 class="section-title">All Medications</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="product-icon">🌿</div>
+                        <h3>Allergy Relief Tablets</h3>
+                        <p class="description">Non-drowsy 24-hour relief from indoor and outdoor allergies.</p>
+                        <div class="price">$14.50</div>
+                        <button class="btn" onclick="triggerTestAlert()">Buy Now</button>
+                    </div>
+                    <div class="card">
+                        <div class="product-icon">🤧</div>
+                        <h3>Cold & Flu Syrup</h3>
+                        <p class="description">Multi-symptom relief for cough, sore throat, and congestion.</p>
+                        <div class="price">$11.20</div>
+                        <button class="btn" onclick="triggerTestAlert()">Buy Now</button>
+                    </div>
+                    <div class="card">
+                        <div class="product-icon">🤕</div>
+                        <h3>Ibuprofen 400mg</h3>
+                        <p class="description">Effective anti-inflammatory medication for targeted pain relief.</p>
+                        <div class="price">$7.50</div>
+                        <button class="btn" onclick="triggerTestAlert()">Buy Now</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="supplements" class="tab-section">
+            <section class="container">
+                <h2 class="section-title">Vitamins & Supplements</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="product-icon">🧪</div>
+                        <h3>Vitamin C Complex</h3>
+                        <p class="description">Daily immune system support with essential vitamins and antioxidants.</p>
+                        <div class="price">$12.99</div>
+                        <button class="btn" onclick="triggerTestAlert()">Buy Now</button>
+                    </div>
+                    <div class="card">
+                        <div class="product-icon">🦴</div>
+                        <h3>Calcium & Vitamin D3</h3>
+                        <p class="description">Promotes bone health and supports strong teeth.</p>
+                        <div class="price">$15.00</div>
+                        <button class="btn" onclick="triggerTestAlert()">Buy Now</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="contact" class="tab-section">
+            <section class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="card" style="max-width: 500px; margin: 0 auto; text-align: left;">
+                    <h3 style="margin-bottom: 1rem; text-align: center;">Get in Touch</h3>
+                    <p><strong>Email:</strong> support@vitalispharmacy.com</p>
+                    <p style="margin-top: 10px;"><strong>Phone:</strong> 1-800-VITALIS</p>
+                    <p style="margin-top: 10px;"><strong>Address:</strong><br>123 Health Ave,<br>Medical District, NY 10001</p>
+                    <p style="margin-top: 20px; font-size: 0.9rem; color: #666; text-align: center;">Customer support is available 24/7.</p>
+                </div>
+            </section>
+        </div>
+
+    </main>
 
     <footer>
         <p>&copy; 2026 Vitalis Pharmacy. All rights reserved.</p>
@@ -288,24 +369,46 @@
     </div>
 
     <script>
-        // Select the modal element
+        // Modal Logic
         const modal = document.getElementById('testModal');
 
-        // Function triggered when "Buy Now" is clicked
         function triggerTestAlert() {
             modal.style.display = 'flex';
         }
 
-        // Function to close the modal
         function closeModal() {
             modal.style.display = 'none';
         }
 
-        // Close modal if user clicks outside the white box
         window.onclick = function(event) {
             if (event.target == modal) {
                 closeModal();
             }
+        }
+
+        // --- NEW TAB LOGIC ---
+        function openTab(event, tabId) {
+            // Prevent the link from jumping to the top of the page
+            event.preventDefault();
+
+            // 1. Hide all elements with class="tab-section"
+            const sections = document.querySelectorAll('.tab-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 2. Remove the class "active" from all navigation links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // 3. Show the specific tab content and highlight the clicked link
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            // Scroll back to top when switching tabs for a better experience
+            window.scrollTo(0, 0);
         }
     </script>
 </body>
