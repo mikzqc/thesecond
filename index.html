@@ -33,9 +33,12 @@
         .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
         .btn-outline:hover { background: var(--primary); color: white; }
         input, select { background-color: var(--input-bg); color: var(--text-color); }
+        
+        /* Fix for Currency Select Dropdown Visibility */
+        select option { background-color: var(--card-bg); color: var(--text-color); }
 
         /* HEADER & NAV */
-        .top-bar { background: #001f3f; color: white; font-size: 0.8rem; padding: 5px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .top-bar { background: #001f3f; color: white; font-size: 0.8rem; padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; }
         header { background: var(--primary); color: white; padding: 1rem 5%; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .logo { font-size: 1.5rem; font-weight: bold; cursor: pointer; }
         nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
@@ -48,6 +51,14 @@
         /* VIEWS */
         .view-section { min-height: 80vh; padding: 2rem 5%; }
 
+        /* HOMEPAGE VIEW */
+        .hero { background: linear-gradient(135deg, rgba(0,86,179,0.1), rgba(40,167,69,0.1)); padding: 4rem 2rem; border-radius: 12px; text-align: center; margin-bottom: 3rem; }
+        .hero h1 { font-size: 3rem; color: var(--primary); margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 2rem; line-height: 1.6; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .info-card { background: var(--card-bg); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .info-card h3 { color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        
         /* AUTH VIEW (Login/Register) */
         .auth-container { max-width: 400px; margin: 0 auto; background: var(--card-bg); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); }
         .auth-tabs { display: flex; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border); }
@@ -78,9 +89,9 @@
         /* FLOATING ELEMENTS */
         .chat-widget { position: fixed; bottom: 20px; right: 20px; z-index: 999; }
         .chat-btn { background: var(--primary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer; }
-        .chat-box { display: none; position: absolute; bottom: 70px; right: 0; width: 350px; background: var(--card-bg); border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column; }
+        .chat-box { display: none; position: absolute; bottom: 70px; right: 0; width: 350px; background: var(--card-bg); border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); overflow: hidden; border: 1px solid var(--border); flex-direction: column; }
         .chat-header { background: var(--primary); color: white; padding: 1rem; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-        .chat-body { padding: 1rem; height: 300px; background: var(--bg-color); font-size: 0.9rem; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .chat-body { padding: 1rem; height: 350px; background: var(--bg-color); font-size: 0.9rem; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
         .chat-msg { padding: 10px; border-radius: 8px; max-width: 85%; line-height: 1.4; }
         .msg-user { background: var(--primary); color: white; align-self: flex-end; }
         .msg-ai { background: var(--card-bg); border: 1px solid var(--border); align-self: flex-start; }
@@ -93,7 +104,6 @@
 </head>
 <body>
 
-    <!-- Checkout Intercept Modal -->
     <div id="intercept-modal" class="overlay hidden">
         <div class="modal fade-in">
             <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--danger); margin-bottom: 1rem;"></i>
@@ -103,24 +113,43 @@
         </div>
     </div>
 
-    <!-- Top Bar -->
     <div class="top-bar">
-        <span><i class="fas fa-truck"></i> Free Shipping on orders over $50</span>
+        <span id="shipping-banner"><i class="fas fa-truck"></i> Free Shipping on orders over $50.00</span>
         <span style="display: flex; gap: 10px; align-items: center;">
-            <select id="currency-select" onchange="changeCurrency()" style="background: rgba(255,255,255,0.2); border: none; color: white; cursor: pointer; outline: none; padding: 2px 5px; border-radius: 4px;">
+            <select id="currency-select" onchange="changeCurrency()" style="background: rgba(255,255,255,0.2); border: none; color: white; cursor: pointer; outline: none; padding: 4px 8px; border-radius: 4px;">
                 <option value="USD">USD ($)</option>
                 <option value="EUR">EUR (€)</option>
                 <option value="GBP">GBP (£)</option>
+                <option value="JPY">JPY (¥)</option>
+                <option value="CAD">CAD (C$)</option>
+                <option value="AUD">AUD (A$)</option>
+                <option value="CHF">CHF (CHF)</option>
+                <option value="CNY">CNY (¥)</option>
+                <option value="INR">INR (₹)</option>
+                <option value="BRL">BRL (R$)</option>
+                <option value="ZAR">ZAR (R)</option>
+                <option value="MXN">MXN ($)</option>
+                <option value="SGD">SGD (S$)</option>
+                <option value="NZD">NZD (NZ$)</option>
+                <option value="HKD">HKD (HK$)</option>
+                <option value="SEK">SEK (kr)</option>
+                <option value="NOK">NOK (kr)</option>
+                <option value="DKK">DKK (kr)</option>
+                <option value="KRW">KRW (₩)</option>
+                <option value="TRY">TRY (₺)</option>
+                <option value="AED">AED (د.إ)</option>
+                <option value="SAR">SAR (﷼)</option>
+                <option value="RUB">RUB (₽)</option>
             </select>
         </span>
     </div>
 
-    <!-- Header -->
     <header>
-        <div class="logo" onclick="switchView('shop')"><i class="fas fa-cross"></i> Vitalis</div>
+        <div class="logo" onclick="switchView('home')"><i class="fas fa-cross"></i> Vitalis</div>
         <nav>
             <ul>
-                <li><a id="nav-shop" class="active" onclick="switchView('shop')">Shop Medicines</a></li>
+                <li><a id="nav-home" class="active" onclick="switchView('home')">Home</a></li>
+                <li><a id="nav-shop" onclick="switchView('shop')">Shop Medicines</a></li>
                 <li><a id="nav-auth" onclick="switchView('auth')"><span id="account-text">Login / Register</span></a></li>
             </ul>
         </nav>
@@ -133,7 +162,29 @@
         </div>
     </header>
 
-    <!-- ==================== AUTHENTICATION VIEW ==================== -->
+    <div id="view-home" class="view-section fade-in">
+        <div class="hero">
+            <h1>Healthcare You Can Trust.</h1>
+            <p>Founded in 2005, Vitalis Pharmacy has been at the forefront of digital healthcare, delivering safe, certified, and affordable medications to over 2 million satisfied customers worldwide.</p>
+            <button class="btn" style="width: auto; padding: 15px 30px; font-size: 1.1rem;" onclick="switchView('shop')">Browse Medications</button>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3><i class="fas fa-history"></i> Our Story</h3>
+                <p style="line-height: 1.6; color: var(--text-muted);">What started as a small family-owned apothecary in upstate New York has transformed into a leading digital health platform. We believe that access to basic healthcare and vital medications should be a universal right, seamlessly delivered to your door.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-shield-alt"></i> Certified Safe</h3>
+                <p style="line-height: 1.6; color: var(--text-muted);">Every medication we stock is rigorously tested and sourced directly from FDA-approved manufacturers. Our state-of-the-art climate-controlled facilities ensure that the integrity of your medicine is preserved from our shelves to your hands.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-user-md"></i> 24/7 AI Support</h3>
+                <p style="line-height: 1.6; color: var(--text-muted);">Have questions about dosages or side effects? Our advanced AI Pharmacist is trained on our entire catalog and medical databases to provide you with instant, accurate information at any time of the day or night. Just click the chat icon below.</p>
+            </div>
+        </div>
+    </div>
+
     <div id="view-auth" class="view-section fade-in hidden">
         <div class="auth-container" id="auth-box">
             <div class="auth-tabs">
@@ -167,8 +218,7 @@
         </div>
     </div>
 
-    <!-- ==================== SHOP VIEW ==================== -->
-    <div id="view-shop" class="view-section fade-in">
+    <div id="view-shop" class="view-section fade-in hidden">
         <div class="shop-layout">
             <div class="sidebar">
                 <h3>Categories</h3>
@@ -182,12 +232,10 @@
                 </ul>
             </div>
             <div class="grid" id="product-grid">
-                <!-- Dynamically populated by JS -->
-            </div>
+                </div>
         </div>
     </div>
 
-    <!-- ==================== CHECKOUT VIEW ==================== -->
     <div id="view-checkout" class="view-section fade-in hidden">
         <h2 style="margin-bottom: 2rem;">Secure Checkout</h2>
         
@@ -234,31 +282,27 @@
         </div>
     </div>
 
-    <!-- Live Chat Floating Widget (AI Integration) -->
     <div class="chat-widget">
         <div class="chat-box" id="chat-box" style="display: none;">
             <div class="chat-header">
                 Pharmacist AI 
                 <i class="fas fa-times" style="cursor: pointer;" onclick="document.getElementById('chat-box').style.display='none'"></i>
             </div>
-            
-            <div style="padding: 10px; background: var(--card-bg); border-bottom: 1px solid var(--border); font-size: 0.8rem;">
-                <input type="password" id="gemini-api-key" placeholder="Enter TokenReply API Key to enable AI" style="width: 100%; padding: 5px; border: 1px solid var(--border);">
-            </div>
-
             <div class="chat-body" id="chat-body">
-                <div class="chat-msg msg-ai">Hello! I am your virtual pharmacist. How can I help you with your medications today?</div>
+                <div class="chat-msg msg-ai">Hello! I am your virtual pharmacist for Vitalis. I can help you with dosage information or check our inventory for you. How can I help?</div>
             </div>
             <div class="chat-input">
                 <input type="text" placeholder="Type a message..." id="chat-msg-input" onkeypress="if(event.key === 'Enter') sendAIChat()">
                 <button class="btn" style="width: auto; border-radius: 0;" onclick="sendAIChat()"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
-        <div class="chat-btn" onclick="const b = document.getElementById('chat-box'); b.style.display = b.style.display === 'flex' ? 'none' : 'flex';"><i class="fas fa-comment-medical"></i></div>
+        <div class="chat-btn" onclick="const b = document.getElementById('chat-box'); b.style.display = b.style.display === 'flex' ? 'flex' : 'flex';"><i class="fas fa-comment-medical"></i></div>
     </div>
 
-    <!-- SYSTEM LOGIC -->
     <script>
+        // HARDCODED API KEY AS REQUESTED
+        const TOKENREPLY_API_KEY = "sk-qBbEyvd4P4jDOu3dwD5KIU2QF347JD1N23vjOjuUzY0Qtbjy";
+
         // 50 Product Database
         const db = [
             // Pain Management (10)
@@ -318,16 +362,41 @@
             { id: 50, name: "Stool Softener", cat: "Digestive", price: 10.99, icon: "💊" }
         ];
 
-        // State Variables
+        // State Variables & Expanded Exchange Rates
         let cart = [];
-        let discountRate = 0; // 0 = no discount, 0.5 = 50% off
-        const rates = { 'USD': { r: 1, s: '$' }, 'EUR': { r: 0.92, s: '€' }, 'GBP': { r: 0.79, s: '£' } };
+        let discountRate = 0;
+        const rates = {
+            'USD': { r: 1, s: '$' },
+            'EUR': { r: 0.92, s: '€' },
+            'GBP': { r: 0.79, s: '£' },
+            'JPY': { r: 150.50, s: '¥' },
+            'CAD': { r: 1.35, s: 'C$' },
+            'AUD': { r: 1.52, s: 'A$' },
+            'CHF': { r: 0.88, s: 'CHF ' },
+            'CNY': { r: 7.23, s: '¥' },
+            'INR': { r: 83.10, s: '₹' },
+            'BRL': { r: 4.95, s: 'R$' },
+            'ZAR': { r: 18.90, s: 'R ' },
+            'MXN': { r: 17.10, s: '$' },
+            'SGD': { r: 1.34, s: 'S$' },
+            'NZD': { r: 1.63, s: 'NZ$' },
+            'HKD': { r: 7.82, s: 'HK$' },
+            'SEK': { r: 10.40, s: 'kr ' },
+            'NOK': { r: 10.50, s: 'kr ' },
+            'DKK': { r: 6.80, s: 'kr ' },
+            'KRW': { r: 1335.0, s: '₩' },
+            'TRY': { r: 31.00, s: '₺' },
+            'AED': { r: 3.67, s: 'د.إ ' },
+            'SAR': { r: 3.75, s: '﷼ ' },
+            'RUB': { r: 92.50, s: '₽' }
+        };
         let curr = rates['USD'];
         let currentUser = null;
 
         window.onload = () => {
             checkAuthStatus();
             renderShop("All");
+            updateShippingBanner();
         };
 
         // UI & Navigation Logic
@@ -368,220 +437,4 @@
         function handleAuth(e) {
             e.preventDefault();
             const email = document.getElementById('auth-email').value;
-            const pass = document.getElementById('auth-pass').value;
-            const name = document.getElementById('auth-name').value;
-            const err = document.getElementById('auth-error');
-            
-            let users = JSON.parse(localStorage.getItem('vitalis_users') || '{}');
-
-            if (authMode === 'register') {
-                if (users[email]) {
-                    err.innerText = "Email already registered.";
-                    err.style.display = 'block';
-                    return;
-                }
-                users[email] = { name, pass };
-                localStorage.setItem('vitalis_users', JSON.stringify(users));
-                currentUser = { email, name };
-            } else {
-                if (!users[email] || users[email].pass !== pass) {
-                    err.innerText = "Invalid credentials.";
-                    err.style.display = 'block';
-                    return;
-                }
-                currentUser = { email, name: users[email].name };
-            }
-
-            localStorage.setItem('vitalis_current_user', JSON.stringify(currentUser));
-            document.getElementById('auth-form').reset();
-            checkAuthStatus();
-        }
-
-        function checkAuthStatus() {
-            const stored = localStorage.getItem('vitalis_current_user');
-            if (stored) {
-                currentUser = JSON.parse(stored);
-                document.getElementById('account-text').innerText = `Account (${currentUser.name})`;
-                document.getElementById('auth-box').classList.add('hidden');
-                document.getElementById('profile-box').classList.remove('hidden');
-                document.getElementById('profile-name').innerText = currentUser.name;
-                document.getElementById('profile-email').innerText = currentUser.email;
-            } else {
-                currentUser = null;
-                document.getElementById('account-text').innerText = "Login / Register";
-                document.getElementById('auth-box').classList.remove('hidden');
-                document.getElementById('profile-box').classList.add('hidden');
-            }
-        }
-
-        function logout() {
-            localStorage.removeItem('vitalis_current_user');
-            checkAuthStatus();
-            setAuthTab('login');
-        }
-
-        // Shop & Currency Logic
-        function changeCurrency() {
-            const code = document.getElementById('currency-select').value;
-            curr = rates[code];
-            renderShop(document.querySelector('#category-list li.active').innerText);
-            updateSummary();
-        }
-
-        function filterShop(cat, el) {
-            document.querySelectorAll('#category-list li').forEach(li => li.classList.remove('active'));
-            if(el) el.classList.add('active');
-            renderShop(cat);
-        }
-
-        function renderShop(cat) {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = '';
-            
-            const toRender = cat === "All Products" || cat === "All" ? db : db.filter(p => p.cat === cat);
-            
-            toRender.forEach(item => {
-                const convertedPrice = (item.price * curr.r).toFixed(2);
-                grid.innerHTML += `
-                    <div class="card">
-                        <div style="font-size: 3rem; margin-bottom: 10px;">${item.icon}</div>
-                        <h4>${item.name}</h4>
-                        <p style="font-size: 1.2rem; font-weight: bold; color: var(--primary); margin: 10px 0;">${curr.s}${convertedPrice}</p>
-                        <button class="btn" onclick="addToCart(${item.id}, event)">Add to Cart</button>
-                    </div>
-                `;
-            });
-        }
-
-        // Cart Grouping Logic
-        function addToCart(id, e) {
-            const item = db.find(i => i.id === id);
-            const existing = cart.find(i => i.id === id);
-            
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                cart.push({ ...item, quantity: 1 });
-            }
-            
-            document.getElementById('cart-count').innerText = cart.reduce((sum, i) => sum + i.quantity, 0);
-            
-            if(e) {
-                const btn = e.target;
-                const orig = btn.innerText;
-                btn.innerText = "Added ✓";
-                btn.style.background = "#28a745";
-                setTimeout(() => { btn.innerText = orig; btn.style.background = ""; }, 1000);
-            }
-        }
-
-        // Checkout Math (Promo Code & Grouping)
-        function applyPromo() {
-            const code = document.getElementById('promo-code').value.toUpperCase();
-            if(code === "MIKZQC") {
-                discountRate = 0.50; // 50% OFF
-                document.getElementById('promo-row').style.display = 'flex';
-                updateSummary();
-            } else {
-                alert("Invalid code.");
-            }
-        }
-
-        function updateSummary() {
-            const container = document.getElementById('cart-items');
-            if (cart.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); font-style: italic;">Your cart is empty.</p>';
-                document.getElementById('sum-sub').innerText = `${curr.s}0.00`;
-                document.getElementById('sum-tax').innerText = `${curr.s}0.00`;
-                document.getElementById('sum-total').innerText = `${curr.s}0.00`;
-                return;
-            }
-
-            let subtotal = 0;
-            container.innerHTML = '';
-            
-            cart.forEach(item => {
-                const lineTotal = (item.price * item.quantity * curr.r);
-                subtotal += lineTotal;
-                container.innerHTML += `<div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span>${item.icon} ${item.name} <strong>x${item.quantity}</strong></span> <span>${curr.s}${lineTotal.toFixed(2)}</span></div>`;
-            });
-
-            const tax = subtotal * 0.08;
-            const discountAmt = subtotal * discountRate; // 50% applied to subtotal
-            const total = (subtotal - discountAmt) + tax;
-
-            document.getElementById('sum-sub').innerText = `${curr.s}${subtotal.toFixed(2)}`;
-            document.getElementById('sum-tax').innerText = `${curr.s}${tax.toFixed(2)}`;
-            if(discountRate > 0) document.getElementById('sum-discount').innerText = `-${curr.s}${discountAmt.toFixed(2)}`;
-            document.getElementById('sum-total').innerText = `${curr.s}${Math.max(total, 0).toFixed(2)}`;
-        }
-
-        function processCheckout(e) {
-            e.preventDefault();
-            if(cart.length === 0) { alert("Cart is empty."); return; }
-            document.getElementById('intercept-modal').classList.remove('hidden');
-        }
-
-        // AI Chat Functionality (TokenReply Integration)
-        async function sendAIChat() {
-            const input = document.getElementById('chat-msg-input');
-            const apiKey = document.getElementById('gemini-api-key').value.trim();
-            const text = input.value.trim();
-            if(!text) return;
-            
-            const body = document.getElementById('chat-body');
-            
-            // Append User Message
-            body.innerHTML += `<div class="chat-msg msg-user">${text}</div>`;
-            input.value = '';
-            body.scrollTop = body.scrollHeight;
-
-            if(!apiKey) {
-                setTimeout(() => {
-                    body.innerHTML += `<div class="chat-msg msg-ai" style="color: var(--danger);">Error: Please enter a TokenReply API Key at the top of the chat to use the AI Pharmacist.</div>`;
-                    body.scrollTop = body.scrollHeight;
-                }, 500);
-                return;
-            }
-
-            // Append Loading Indicator
-            const loaderId = 'loader-' + Date.now();
-            body.innerHTML += `<div class="chat-msg msg-ai" id="${loaderId}"><em>Typing...</em></div>`;
-            body.scrollTop = body.scrollHeight;
-
-            try {
-                const response = await fetch(`https://api.tokenreply.com/v1/chat/completions`, {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey}`
-                    },
-                    body: JSON.stringify({
-                        model: "meta/muse-glimmer-30b",
-                        messages: [
-                            { role: "system", content: "You are a professional, helpful, and concise pharmacist for an online pharmacy called Vitalis." },
-                            { role: "user", content: text }
-                        ]
-                    })
-                });
-                
-                const data = await response.json();
-                document.getElementById(loaderId).remove();
-
-                if(data.error) {
-                    body.innerHTML += `<div class="chat-msg msg-ai" style="color: var(--danger);">API Error: ${data.error.message}</div>`;
-                } else {
-                    const reply = data.choices[0].message.content;
-                    // Basic formatting cleanup for HTML injection
-                    const cleanReply = reply.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                    body.innerHTML += `<div class="chat-msg msg-ai">${cleanReply}</div>`;
-                }
-            } catch (err) {
-                document.getElementById(loaderId).remove();
-                body.innerHTML += `<div class="chat-msg msg-ai" style="color: var(--danger);">Network error. Please check API key and connection.</div>`;
-            }
-            body.scrollTop = body.scrollHeight;
-        }
-    </script>
-</body>
-</html>
+            const pass = document.getElementById('
