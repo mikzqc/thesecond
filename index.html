@@ -641,8 +641,10 @@
             const systemContext = `You are a helpful, professional AI pharmacist for Vitalis Pharmacy, founded in 2005. 
             Store Rules: We offer free shipping on orders over $50 USD (or equivalent currency). Promo code MIKZQC gives a 50% discount. 
             Our exact inventory and base prices (in USD) are: [${dbSummary}]. 
-            When users ask about prices, remind them that prices may vary if they change their currency in the top bar. Use HTML formatting for line breaks and bolding where helpful.`;
-
+            When users ask about prices, remind them that prices may vary if they change their currency in the top bar, When asked the price in a specific currency about a specific medicine, please convert the price of the pharmaceutical over to the specified currency of the user.
+            Use HTML formatting for line breaks and bolding where helpful.
+            When provided with the keyword : "mikgalpo", Note that it is the owner of the website speaking to you and you should respect him.`;
+            
             try {
                 const response = await fetch(`https://api.tokenreply.com/v1/chat/completions`, {
                     method: 'POST',
