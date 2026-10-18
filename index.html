@@ -538,7 +538,7 @@
             margin-bottom: 1rem;
         }
         .card-cat-badge {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.04em;
@@ -549,6 +549,58 @@
             display: inline-block;
             margin-bottom: 6px;
             width: fit-content;
+        }
+        .card-form-tag {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--bg-color);
+            border: 1px solid var(--border);
+            padding: 2px 8px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .pagination-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding: 1rem 1.25rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+        .page-btn {
+            background: var(--bg-color);
+            border: 1px solid var(--border);
+            color: var(--text-color);
+            min-width: 36px;
+            height: 36px;
+            padding: 0 10px;
+            border-radius: 9px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .page-btn:hover:not(:disabled) {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .page-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+        }
+        .page-btn:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
         }
 
         /* AUTHENTICATION VIEW */
@@ -950,7 +1002,7 @@
                     <p>Founded in 2005, Vitalis Pharmacy has been at the forefront of digital healthcare, delivering safe, certified, and affordable medications to over 2 million satisfied customers worldwide.</p>
                     <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-start;" class=" max-lg:justify-center">
                         <button class="btn btn-primary" style="width: auto; padding: 14px 28px; font-size: 1rem;" onclick="switchView('shop')">
-                            Browse 50+ Medications <i class="fas fa-arrow-right"></i>
+                            Browse 350 Medications & Supplies <i class="fas fa-arrow-right"></i>
                         </button>
                         <button class="btn btn-outline" style="width: auto; padding: 14px 24px; font-size: 1rem;" onclick="openChatWidget()">
                             <i class="fas fa-user-doctor"></i> Ask AI Pharmacist
@@ -963,8 +1015,8 @@
                     <div class="trust-pill">
                         <div class="trust-pill-icon"><i class="fas fa-flask-vial"></i></div>
                         <div>
-                            <div style="font-weight: 800; font-size: 1.05rem;">FDA-Sourced</div>
-                            <div style="font-size: 0.78rem; color: var(--text-muted);">100% Certified Genuine</div>
+                            <div style="font-weight: 800; font-size: 1.05rem;">350+ Products</div>
+                            <div style="font-size: 0.78rem; color: var(--text-muted);">15 Clinical Departments</div>
                         </div>
                     </div>
                     <div class="trust-pill">
@@ -975,7 +1027,7 @@
                         </div>
                     </div>
                     <div class="trust-pill">
-                        <div class="trust-pill-icon" style="background: var(--secondary-soft); color: var(--secondary);"><i class="fas fa-Snowflake"></i><i class="fas fa-temperature-low"></i></div>
+                        <div class="trust-pill-icon" style="background: var(--secondary-soft); color: var(--secondary);"><i class="fas fa-temperature-low"></i></div>
                         <div>
                             <div style="font-weight: 800; font-size: 1.05rem;">Climate Kept</div>
                             <div style="font-size: 0.78rem; color: var(--text-muted);">Bio-Sealed Storage</div>
@@ -992,17 +1044,13 @@
             </div>
         </div>
 
-        <!-- Quick Category Jump Pills -->
+        <!-- Quick Category Jump Pills (Dynamically Populated for all 15 Categories) -->
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-            <h2 style="font-size: 1.35rem; font-weight: 800;">Explore Clinical Departments</h2>
-            <a onclick="switchView('shop')" style="color: var(--primary); font-size: 0.9rem; font-weight: 600; cursor: pointer;">View Full Catalog <i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i></a>
+            <h2 style="font-size: 1.35rem; font-weight: 800;">Explore 15 Clinical Departments (350 Items)</h2>
+            <a onclick="switchView('shop')" style="color: var(--primary); font-size: 0.9rem; font-weight: 600; cursor: pointer;">View Full 350-Item Catalog <i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i></a>
         </div>
-        <div class="category-pills-row">
-            <div class="cat-jump-pill" onclick="jumpToCategory('Pain Management')"><span>💊</span> Pain Management <span style="color: var(--text-muted); font-size: 0.78rem;">(10)</span></div>
-            <div class="cat-jump-pill" onclick="jumpToCategory('Allergy Relief')"><span>🌿</span> Allergy Relief <span style="color: var(--text-muted); font-size: 0.78rem;">(10)</span></div>
-            <div class="cat-jump-pill" onclick="jumpToCategory('Vitamins')"><span>🍊</span> Vitamins & Supplements <span style="color: var(--text-muted); font-size: 0.78rem;">(10)</span></div>
-            <div class="cat-jump-pill" onclick="jumpToCategory('First Aid')"><span>🩹</span> First Aid & Care <span style="color: var(--text-muted); font-size: 0.78rem;">(10)</span></div>
-            <div class="cat-jump-pill" onclick="jumpToCategory('Digestive')"><span>💧</span> Digestive Health <span style="color: var(--text-muted); font-size: 0.78rem;">(10)</span></div>
+        <div class="category-pills-row" id="home-category-pills">
+            <!-- Dynamically populated by JS -->
         </div>
 
         <!-- Featured Pharmacy Essentials -->
@@ -1091,35 +1139,37 @@
         <div class="shop-layout">
             <!-- Category Sidebar -->
             <div class="sidebar">
-                <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
-                    <i class="fas fa-layer-group" style="color: var(--primary);"></i> Categories
+                <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between;">
+                    <span style="display: flex; align-items: center; gap: 8px;"><i class="fas fa-layer-group" style="color: var(--primary);"></i> Departments</span>
+                    <span style="font-size: 0.75rem; background: var(--primary-soft); color: var(--primary); padding: 2px 8px; border-radius: 999px;">350 Total</span>
                 </h3>
-                <ul id="category-list">
-                    <li class="active" onclick="filterShop('All', this)"><span>All Products</span> <span style="font-size: 0.75rem; opacity: 0.8;">50</span></li>
-                    <li onclick="filterShop('Pain Management', this)"><span>Pain Management</span> <span style="font-size: 0.75rem; opacity: 0.8;">10</span></li>
-                    <li onclick="filterShop('Allergy Relief', this)"><span>Allergy Relief</span> <span style="font-size: 0.75rem; opacity: 0.8;">10</span></li>
-                    <li onclick="filterShop('Vitamins', this)"><span>Vitamins</span> <span style="font-size: 0.75rem; opacity: 0.8;">10</span></li>
-                    <li onclick="filterShop('First Aid', this)"><span>First Aid</span> <span style="font-size: 0.75rem; opacity: 0.8;">10</span></li>
-                    <li onclick="filterShop('Digestive', this)"><span>Digestive</span> <span style="font-size: 0.75rem; opacity: 0.8;">10</span></li>
+                <ul id="category-list" style="max-height: 62vh; overflow-y: auto; padding-right: 4px;">
+                    <!-- Dynamically populated with exact category counts by JS -->
                 </ul>
 
-                <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
-                    <div style="font-weight: 700; color: var(--text-color); margin-bottom: 4px;"><i class="fas fa-circle-info" style="color: var(--primary);"></i> Need Guidance?</div>
-                    Ask our 24/7 AI Pharmacist in the bottom-right corner to compare active ingredients or check inventory prices.
+                <div style="margin-top: 1.25rem; padding-top: 1.15rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+                    <div style="font-weight: 700; color: var(--text-color); margin-bottom: 4px;"><i class="fas fa-circle-info" style="color: var(--primary);"></i> Clinical Assistance</div>
+                    Ask our 24/7 AI Pharmacist in the bottom-right corner to search all 350 items, compare active ingredients, or check prices.
                 </div>
             </div>
 
             <!-- Main Catalog Area -->
             <div>
                 <div class="shop-toolbar">
-                    <div style="position: relative; flex: 1; min-width: 220px;">
+                    <div style="position: relative; flex: 1; min-width: 240px;">
                         <i class="fas fa-search" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
-                        <input type="text" id="shop-search" placeholder="Search 50 medicines by name or category..." oninput="handleShopFilter()" style="width: 100%; padding-left: 38px;">
+                        <input type="text" id="shop-search" placeholder="Search 350 medicines, devices, or dosage forms..." oninput="handleShopFilter(true)" style="width: 100%; padding-left: 38px;">
                     </div>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span id="product-result-count" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; white-space: nowrap;">50 Products</span>
-                        <select id="shop-sort" onchange="handleShopFilter()" aria-label="Sort Products">
-                            <option value="default">Sort: Featured</option>
+                    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                        <span id="product-result-count" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; white-space: nowrap;">350 Products</span>
+                        <select id="shop-per-page" onchange="handleShopFilter(true)" aria-label="Items per page">
+                            <option value="24">Show: 24 / page</option>
+                            <option value="48">Show: 48 / page</option>
+                            <option value="100">Show: 100 / page</option>
+                            <option value="350">Show: All 350</option>
+                        </select>
+                        <select id="shop-sort" onchange="handleShopFilter(false)" aria-label="Sort Products">
+                            <option value="default">Sort: Featured (ID)</option>
                             <option value="price-asc">Price: Low to High</option>
                             <option value="price-desc">Price: High to Low</option>
                             <option value="name-asc">Name: A to Z</option>
@@ -1128,6 +1178,11 @@
                 </div>
 
                 <div class="grid-products" id="product-grid">
+                    <!-- Dynamically populated by JS -->
+                </div>
+
+                <!-- Pagination Controls -->
+                <div class="pagination-bar" id="pagination-bar">
                     <!-- Dynamically populated by JS -->
                 </div>
             </div>
@@ -1267,69 +1322,422 @@
         // HARDCODED API KEY AS REQUESTED
         const TOKENREPLY_API_KEY = "sk-qBbEyvd4P4jDOu3dwD5KIU2QF347JD1N23vjOjuUzY0Qtbjy";
 
-        // 50 Product Database (Preserved Strictly)
+        // 350-Item Clinical Pharmacy Product Database (Original 50 + 300 Authentic Additions)
         const db = [
-            // Pain Management (10)
-            { id: 1, name: "Ibuprofen 400mg", cat: "Pain Management", price: 8.99, icon: "💊" },
-            { id: 2, name: "Paracetamol 500mg", cat: "Pain Management", price: 5.50, icon: "💊" },
-            { id: 3, name: "Aspirin 81mg", cat: "Pain Management", price: 6.25, icon: "💊" },
-            { id: 4, name: "Naproxen Sodium", cat: "Pain Management", price: 10.99, icon: "💊" },
-            { id: 5, name: "Diclofenac Gel", cat: "Pain Management", price: 14.00, icon: "🧴" },
-            { id: 6, name: "Lidocaine Patches", cat: "Pain Management", price: 18.50, icon: "🩹" },
-            { id: 7, name: "Migraine Relief Extra", cat: "Pain Management", price: 12.99, icon: "💊" },
-            { id: 8, name: "Muscle Rub Cream", cat: "Pain Management", price: 9.99, icon: "🧴" },
-            { id: 9, name: "Arthritis Relief Cap", cat: "Pain Management", price: 15.00, icon: "💊" },
-            { id: 10, name: "Acetaminophen Extra", cat: "Pain Management", price: 7.99, icon: "💊" },
-            // Allergy Relief (10)
-            { id: 11, name: "Loratadine 10mg", cat: "Allergy Relief", price: 11.99, icon: "🌿" },
-            { id: 12, name: "Cetirizine HCL", cat: "Allergy Relief", price: 12.50, icon: "🌿" },
-            { id: 13, name: "Diphenhydramine", cat: "Allergy Relief", price: 6.99, icon: "💊" },
-            { id: 14, name: "Fexofenadine", cat: "Allergy Relief", price: 19.99, icon: "💊" },
-            { id: 15, name: "Saline Nasal Spray", cat: "Allergy Relief", price: 5.99, icon: "💦" },
-            { id: 16, name: "Decongestant Spray", cat: "Allergy Relief", price: 8.50, icon: "👃" },
-            { id: 17, name: "Cough Syrup PM", cat: "Allergy Relief", price: 10.99, icon: "🥄" },
-            { id: 18, name: "Throat Lozenges", cat: "Allergy Relief", price: 4.50, icon: "🍬" },
-            { id: 19, name: "Flu Multi-Symptom", cat: "Allergy Relief", price: 14.99, icon: "🤧" },
-            { id: 20, name: "Vapor Rub", cat: "Allergy Relief", price: 6.25, icon: "🧴" },
-            // Vitamins (10)
-            { id: 21, name: "Vitamin C 1000mg", cat: "Vitamins", price: 10.99, icon: "🍊" },
-            { id: 22, name: "Vitamin D3 5000IU", cat: "Vitamins", price: 12.50, icon: "☀️" },
-            { id: 23, name: "Zinc Picolinate", cat: "Vitamins", price: 9.99, icon: "🧪" },
-            { id: 24, name: "Magnesium Citrate", cat: "Vitamins", price: 14.00, icon: "🦴" },
-            { id: 25, name: "Omega-3 Fish Oil", cat: "Vitamins", price: 22.99, icon: "🐟" },
-            { id: 26, name: "B-Complex Plus", cat: "Vitamins", price: 16.50, icon: "⚡" },
-            { id: 27, name: "Melatonin 5mg", cat: "Vitamins", price: 8.99, icon: "🌙" },
-            { id: 28, name: "Probiotic 50B", cat: "Vitamins", price: 28.99, icon: "🦠" },
-            { id: 29, name: "Iron Supplement", cat: "Vitamins", price: 7.50, icon: "🩸" },
-            { id: 30, name: "Multivitamin Men", cat: "Vitamins", price: 18.99, icon: "👨" },
-            // First Aid (10)
-            { id: 31, name: "Adhesive Bandages", cat: "First Aid", price: 4.99, icon: "🩹" },
-            { id: 32, name: "Antiseptic Cream", cat: "First Aid", price: 6.50, icon: "🧴" },
-            { id: 33, name: "Hydrogen Peroxide", cat: "First Aid", price: 3.50, icon: "🧪" },
-            { id: 34, name: "Gauze Pads", cat: "First Aid", price: 5.25, icon: "🧻" },
-            { id: 35, name: "Medical Tape", cat: "First Aid", price: 3.99, icon: "🩹" },
-            { id: 36, name: "Burn Relief Gel", cat: "First Aid", price: 8.99, icon: "🔥" },
-            { id: 37, name: "Hydrocortisone 1%", cat: "First Aid", price: 7.50, icon: "🧴" },
-            { id: 38, name: "Instant Cold Pack", cat: "First Aid", price: 4.50, icon: "❄️" },
-            { id: 39, name: "Thermometer Digital", cat: "First Aid", price: 15.99, icon: "🌡️" },
-            { id: 40, name: "First Aid Kit Pro", cat: "First Aid", price: 35.00, icon: "🚑" },
-            // Digestive (10)
-            { id: 41, name: "Antacid Tablets", cat: "Digestive", price: 6.99, icon: "🍬" },
-            { id: 42, name: "Omeprazole 20mg", cat: "Digestive", price: 21.50, icon: "💊" },
-            { id: 43, name: "Laxative Relief", cat: "Digestive", price: 9.25, icon: "🚽" },
-            { id: 44, name: "Anti-Diarrheal", cat: "Digestive", price: 7.99, icon: "🛑" },
-            { id: 45, name: "Gas Relief Drops", cat: "Digestive", price: 8.50, icon: "💧" },
-            { id: 46, name: "Digestive Enzymes", cat: "Digestive", price: 17.99, icon: "⚡" },
-            { id: 47, name: "Pepto Pink Relief", cat: "Digestive", price: 10.50, icon: "🎀" },
-            { id: 48, name: "Fiber Supplement", cat: "Digestive", price: 14.00, icon: "🌾" },
-            { id: 49, name: "Motion Sickness", cat: "Digestive", price: 6.50, icon: "🤢" },
-            { id: 50, name: "Stool Softener", cat: "Digestive", price: 10.99, icon: "💊" }
+            // ==================== ORIGINAL 50 ITEMS (IDs 1–50) ====================
+            // Pain Management (1-10)
+            { id: 1, name: "Ibuprofen 400mg", cat: "Pain Management", price: 8.99, icon: "💊", form: "100 Coated Tablets • NSAID" },
+            { id: 2, name: "Paracetamol 500mg", cat: "Pain Management", price: 5.50, icon: "💊", form: "100 Caplets • Fever & Pain" },
+            { id: 3, name: "Aspirin 81mg", cat: "Pain Management", price: 6.25, icon: "💊", form: "120 Enteric Coated • Low Dose" },
+            { id: 4, name: "Naproxen Sodium", cat: "Pain Management", price: 10.99, icon: "💊", form: "220mg • 90 Liquid Gels" },
+            { id: 5, name: "Diclofenac Gel", cat: "Pain Management", price: 14.00, icon: "🧴", form: "1% Topical Arthritis Gel • 100g" },
+            { id: 6, name: "Lidocaine Patches", cat: "Pain Management", price: 18.50, icon: "🩹", form: "4% Max Strength • 6 Patches" },
+            { id: 7, name: "Migraine Relief Extra", cat: "Pain Management", price: 12.99, icon: "💊", form: "Acetaminophen/Aspirin/Caffeine • 80 Ct" },
+            { id: 8, name: "Muscle Rub Cream", cat: "Pain Management", price: 9.99, icon: "🧴", form: "Menthol & Camphor Analgesic • 85g" },
+            { id: 9, name: "Arthritis Relief Cap", cat: "Pain Management", price: 15.00, icon: "💊", form: "650mg Extended-Release • 100 Caplets" },
+            { id: 10, name: "Acetaminophen Extra", cat: "Pain Management", price: 7.99, icon: "💊", form: "500mg Rapid Release • 100 Gels" },
+            // Allergy Relief (11-20)
+            { id: 11, name: "Loratadine 10mg", cat: "Allergy Relief", price: 11.99, icon: "🌿", form: "24-Hour Non-Drowsy • 60 Tablets" },
+            { id: 12, name: "Cetirizine HCL", cat: "Allergy Relief", price: 12.50, icon: "🌿", form: "10mg Indoor/Outdoor Allergy • 45 Ct" },
+            { id: 13, name: "Diphenhydramine", cat: "Allergy Relief", price: 6.99, icon: "💊", form: "25mg Antihistamine • 100 Mini-Tabs" },
+            { id: 14, name: "Fexofenadine", cat: "Allergy Relief", price: 19.99, icon: "💊", form: "180mg 24Hr Non-Drowsy • 45 Caplets" },
+            { id: 15, name: "Saline Nasal Spray", cat: "Allergy Relief", price: 5.99, icon: "💦", form: "Drug-Free Moisturizing Mist • 88mL" },
+            { id: 16, name: "Decongestant Spray", cat: "Allergy Relief", price: 8.50, icon: "👃", form: "Oxymetazoline HCl 0.05% • 30mL" },
+            { id: 17, name: "Cough Syrup PM", cat: "Allergy Relief", price: 10.99, icon: "🥄", form: "Nighttime Cough & Sinus • 237mL" },
+            { id: 18, name: "Throat Lozenges", cat: "Allergy Relief", price: 4.50, icon: "🍬", form: "Honey Lemon Menthol Drops • 45 Ct" },
+            { id: 19, name: "Flu Multi-Symptom", cat: "Allergy Relief", price: 14.99, icon: "🤧", form: "Day & Night Combo Pack • 48 LiquiCaps" },
+            { id: 20, name: "Vapor Rub", cat: "Allergy Relief", price: 6.25, icon: "🧴", form: "Eucalyptus & Menthol Ointment • 100g" },
+            // Vitamins (21-30)
+            { id: 21, name: "Vitamin C 1000mg", cat: "Vitamins", price: 10.99, icon: "🍊", form: "With Rose Hips & Bioflavonoids • 120 Ct" },
+            { id: 22, name: "Vitamin D3 5000IU", cat: "Vitamins", price: 12.50, icon: "☀️", form: "Cholecalciferol Softgels • 150 Ct" },
+            { id: 23, name: "Zinc Picolinate", cat: "Vitamins", price: 9.99, icon: "🧪", form: "50mg High Absorption • 100 Veg Caps" },
+            { id: 24, name: "Magnesium Citrate", cat: "Vitamins", price: 14.00, icon: "🦴", form: "400mg Muscle & Nerve Support • 120 Ct" },
+            { id: 25, name: "Omega-3 Fish Oil", cat: "Vitamins", price: 22.99, icon: "🐟", form: "1200mg Triple Strength EPA/DHA • 90 Ct" },
+            { id: 26, name: "B-Complex Plus", cat: "Vitamins", price: 16.50, icon: "⚡", form: "Methylated B12 & Folate • 90 Tabs" },
+            { id: 27, name: "Melatonin 5mg", cat: "Vitamins", price: 8.99, icon: "🌙", form: "Fast-Dissolve Berry Tablets • 90 Ct" },
+            { id: 28, name: "Probiotic 50B", cat: "Vitamins", price: 28.99, icon: "🦠", form: "50 Billion CFU 12-Strain • 30 Delayed Caps" },
+            { id: 29, name: "Iron Supplement", cat: "Vitamins", price: 7.50, icon: "🩸", form: "Ferrous Sulfate 65mg Elemental • 100 Ct" },
+            { id: 30, name: "Multivitamin Men", cat: "Vitamins", price: 18.99, icon: "👨", form: "Complete Daily Micronutrient • 120 Tabs" },
+            // First Aid (31-40)
+            { id: 31, name: "Adhesive Bandages", cat: "First Aid", price: 4.99, icon: "🩹", form: "Assorted Flexible Fabric • 100 Sterile Strips" },
+            { id: 32, name: "Antiseptic Cream", cat: "First Aid", price: 6.50, icon: "🧴", form: "Triple Antibiotic + Pain Relief • 28g" },
+            { id: 33, name: "Hydrogen Peroxide", cat: "First Aid", price: 3.50, icon: "🧪", form: "3% USP Topical Antiseptic • 473mL" },
+            { id: 34, name: "Gauze Pads", cat: "First Aid", price: 5.25, icon: "🧻", form: "4x4 Inch Sterile Non-Stick • 25 Pads" },
+            { id: 35, name: "Medical Tape", cat: "First Aid", price: 3.99, icon: "🩹", form: "Hypoallergenic Micropore Paper • 2 Rolls" },
+            { id: 36, name: "Burn Relief Gel", cat: "First Aid", price: 8.99, icon: "🔥", form: "Lidocaine HCl & Aloe Cooling Gel • 118mL" },
+            { id: 37, name: "Hydrocortisone 1%", cat: "First Aid", price: 7.50, icon: "🧴", form: "Maximum Strength Anti-Itch Cream • 56g" },
+            { id: 38, name: "Instant Cold Pack", cat: "First Aid", price: 4.50, icon: "❄️", form: "Single-Use Squeeze Compress • 2 Pack" },
+            { id: 39, name: "Thermometer Digital", cat: "First Aid", price: 15.99, icon: "🌡️", form: "10-Second Oral/Rectal/Axillary Fever Probe" },
+            { id: 40, name: "First Aid Kit Pro", cat: "First Aid", price: 35.00, icon: "🚑", form: "215-Piece OSHA/ANSI Trauma & Home Kit" },
+            // Digestive (41-50)
+            { id: 41, name: "Antacid Tablets", cat: "Digestive", price: 6.99, icon: "🍬", form: "Calcium Carbonate 1000mg Berry • 96 Chewables" },
+            { id: 42, name: "Omeprazole 20mg", cat: "Digestive", price: 21.50, icon: "💊", form: "Acid Reducer Delayed-Release • 42 Tablets" },
+            { id: 43, name: "Laxative Relief", cat: "Digestive", price: 9.25, icon: "🚽", form: "Bisacodyl 5mg Gentle Overnight • 50 Comfort Tabs" },
+            { id: 44, name: "Anti-Diarrheal", cat: "Digestive", price: 7.99, icon: "🛑", form: "Loperamide HCl 2mg Control • 24 Caplets" },
+            { id: 45, name: "Gas Relief Drops", cat: "Digestive", price: 8.50, icon: "💧", form: "Simethicone 125mg Extra Strength • 48 Softgels" },
+            { id: 46, name: "Digestive Enzymes", cat: "Digestive", price: 17.99, icon: "⚡", form: "Bromelain, Papain, Amylase & Lipase • 90 Caps" },
+            { id: 47, name: "Pepto Pink Relief", cat: "Digestive", price: 10.50, icon: "🎀", form: "Bismuth Subsalicylate 5-Symptom • 354mL" },
+            { id: 48, name: "Fiber Supplement", cat: "Digestive", price: 14.00, icon: "🌾", form: "100% Natural Psyllium Husk Powder • 425g" },
+            { id: 49, name: "Motion Sickness", cat: "Digestive", price: 6.50, icon: "🤢", form: "Meclizine HCl 25mg Less-Drowsy • 16 Chewables" },
+            { id: 50, name: "Stool Softener", cat: "Digestive", price: 10.99, icon: "💊", form: "Docusate Sodium 100mg Stimulant-Free • 100 Gels" },
+
+            // ==================== 300 ADDITIONAL PHARMACY ITEMS (IDs 51–350) ====================
+            // Additional Pain Management (51-70)
+            { id: 51, name: "Ibuprofen 200mg Mini Softgels", cat: "Pain Management", price: 9.49, icon: "💊", form: "80 Liquid-Filled Solubilized Capsules" },
+            { id: 52, name: "Capsaicin 0.1% High Potency Cream", cat: "Pain Management", price: 13.50, icon: "🌶️", form: "Deep Neuropathic & Joint Rub • 57g" },
+            { id: 53, name: "Menthol 16% Roll-On Pain Applicator", cat: "Pain Management", price: 11.25, icon: "🧊", form: "No-Mess Cryo-Therapy Roller • 89mL" },
+            { id: 54, name: "Arnica Montana 30C Bruise Gel", cat: "Pain Management", price: 10.75, icon: "🌼", form: "Non-Greasy Swelling & Stiffness Gel • 75g" },
+            { id: 55, name: "Magnesium Sulfate Epsom Salt Soak", cat: "Pain Management", price: 7.99, icon: "🛁", form: "USP Grade Eucalyptus & Spearmint • 1.36kg" },
+            { id: 56, name: "Thermacare Lower Back HeatWraps", cat: "Pain Management", price: 14.99, icon: "🔥", form: "16-Hour Therapeutic Air-Activated • 4 Wraps" },
+            { id: 57, name: "TENS Unit Dual-Channel Electrotherapy", cat: "Pain Management", price: 39.99, icon: "⚡", form: "Digital Pulse Massager + 8 Electrode Pads" },
+            { id: 58, name: "TENS Replacement Electrode Pads", cat: "Pain Management", price: 12.99, icon: "🩹", form: "2x2 Inch Self-Adhesive Snap Pads • 16 Pack" },
+            { id: 59, name: "Salicylate 15% Deep Heating Ointment", cat: "Pain Management", price: 8.75, icon: "🧴", form: "Extra Strength Muscle & Back Cream • 113g" },
+            { id: 60, name: "Children's Ibuprofen 100mg/5mL", cat: "Pain Management", price: 8.99, icon: "🍓", form: "Dye-Free Berry Oral Suspension • 120mL" },
+            { id: 61, name: "Children's Acetaminophen 160mg/5mL", cat: "Pain Management", price: 8.25, icon: "🍇", form: "Grape Fever & Pain Suspension • 120mL" },
+            { id: 62, name: "Menstrual Cramp Complete Relief", cat: "Pain Management", price: 9.80, icon: "🌸", form: "Acetaminophen/Pamabrom/Pyrilamine • 40 Caplets" },
+            { id: 63, name: "Back & Body Aspirin 500mg", cat: "Pain Management", price: 9.25, icon: "💊", form: "Dual Action Aspirin + Caffeine • 100 Caplets" },
+            { id: 64, name: "Lidocaine 4% + Menthol 1% Spray", cat: "Pain Management", price: 16.50, icon: "💨", form: "Continuous-Angle Numbing Spray • 118mL" },
+            { id: 65, name: "Reusable Gel Hot & Cold Compress", cat: "Pain Management", price: 11.99, icon: "❄️", form: "Flexible Plush-Backed Wrap + Velcro Strap" },
+            { id: 66, name: "Sciatica & Nerve Comfort Complex", cat: "Pain Management", price: 26.50, icon: "🧬", form: "Alpha-Lipoic Acid & Acetyl-L-Carnitine • 60 Ct" },
+            { id: 67, name: "Turmeric Curcumin + BioPerine 1500mg", cat: "Pain Management", price: 21.99, icon: "🧡", form: "95% Standardized Curcuminoids • 90 Veg Caps" },
+            { id: 68, name: "Glucosamine Chondroitin MSM Triple", cat: "Pain Management", price: 27.99, icon: "🦴", form: "Joint Mobility & Cartilage Support • 120 Tabs" },
+            { id: 69, name: "Migraine Cooling Forehead Gel Sheets", cat: "Pain Management", price: 9.50, icon: "🧊", form: "Drug-Free Instant Soothing Hydrogel • 8 Sheets" },
+            { id: 70, name: "Camphor & Wintergreen Liniment Oil", cat: "Pain Management", price: 10.50, icon: "🫙", form: "Traditional Penetrating Botanical Oil • 150mL" },
+
+            // Additional Allergy Relief (71-90)
+            { id: 71, name: "Fluticasone Propionate 50mcg Spray", cat: "Allergy Relief", price: 18.99, icon: "👃", form: "24-Hour Non-Drowsy Allergy Nasal Mist • 120 Sprays" },
+            { id: 72, name: "Triamcinolone Acetonide 55mcg Spray", cat: "Allergy Relief", price: 17.50, icon: "👃", form: "Scent-Free Steroid Nasal Allergy Spray • 120 Sprays" },
+            { id: 73, name: "Levocetirizine Dihydrochloride 5mg", cat: "Allergy Relief", price: 15.99, icon: "🌿", form: "24-Hour Prescription-Strength Relief • 35 Tabs" },
+            { id: 74, name: "Azelastine HCl 0.15% Nasal Spray", cat: "Allergy Relief", price: 22.50, icon: "💨", form: "Steroid-Free Fast Antihistamine Mist • 100 Sprays" },
+            { id: 75, name: "Ketotifen 0.035% Allergy Eye Drops", cat: "Allergy Relief", price: 13.99, icon: "👁️", form: "12-Hour Itchy Eye Antihistamine • 10mL" },
+            { id: 76, name: "Olopatadine 0.2% Once-Daily Eye Drops", cat: "Allergy Relief", price: 18.50, icon: "💧", form: "24-Hour Ocular Allergy Relief • 2.5mL" },
+            { id: 77, name: "Cromolyn Sodium Nasal Solution", cat: "Allergy Relief", price: 14.25, icon: "🛡️", form: "Mast Cell Stabilizer Preventive Spray • 26mL" },
+            { id: 78, name: "Children's Cetirizine 5mg/5mL Syrup", cat: "Allergy Relief", price: 11.99, icon: "🍇", form: "Sugar-Free Grape Allergy Liquid • 118mL" },
+            { id: 79, name: "Children's Loratadine 5mg Chewables", cat: "Allergy Relief", price: 13.49, icon: "🍑", form: "24-Hour Bubblegum Chewable Tablets • 30 Ct" },
+            { id: 80, name: "Sinus Rinse Neti Pot Kit + 50 Packets", cat: "Allergy Relief", price: 14.99, icon: "🫖", form: "Isotonic Premixed USP Saline Nasal Wash" },
+            { id: 81, name: "Sinus Rinse Refill Saline Packets", cat: "Allergy Relief", price: 11.50, icon: "🧂", form: "pH-Balanced Sodium Chloride/Bicarbonate • 100 Pkts" },
+            { id: 82, name: "Chlorpheniramine Maleate 4mg", cat: "Allergy Relief", price: 5.99, icon: "💊", form: "4-Hour Hay Fever & Rhinitis Relief • 100 Tabs" },
+            { id: 83, name: "Diphenhydramine 2% Anti-Itch Gel", cat: "Allergy Relief", price: 7.49, icon: "🧴", form: "Topical Histamine Blocker + Zinc Acetate • 59mL" },
+            { id: 84, name: "Epinephrine-Free Asthma Mist Inhaler", cat: "Allergy Relief", price: 29.99, icon: "🌬️", form: "Racepinephrine HCl 2.25% Bronchodilator • 15mL" },
+            { id: 85, name: "Quercetin + Bromelain & Stinging Nettle", cat: "Allergy Relief", price: 21.00, icon: "🍃", form: "Natural Seasonal Histamine Support • 90 Veg Caps" },
+            { id: 86, name: "Breathe Easy Extra-Strength Nasal Strips", cat: "Allergy Relief", price: 10.99, icon: "🩹", form: "Drug-Free Instant Nasal Passage Opener • 30 Strips" },
+            { id: 87, name: "Hypertonic Sea Water Nasal Decongestant", cat: "Allergy Relief", price: 9.99, icon: "🌊", form: "2.3% Sterile Atlantic Ocean Mist • 100mL" },
+            { id: 88, name: "Allergy & Congestion D Extended-Release", cat: "Allergy Relief", price: 19.50, icon: "💊", form: "12-Hour Antihistamine + Decongestant • 20 Tabs" },
+            { id: 89, name: "Dust Mite & Pollen Barrier Nasal Gel", cat: "Allergy Relief", price: 12.25, icon: "🛡️", form: "Drug-Free Allergen Trapping Balm • 15g" },
+            { id: 90, name: "Budesonide 32mcg 24Hr Nasal Spray", cat: "Allergy Relief", price: 18.75, icon: "👃", form: "Full Prescription Strength Allergy Mist • 120 Sprays" },
+
+            // Additional Vitamins & Supplements (91-115)
+            { id: 91, name: "Multivitamin Women's Daily Complete", cat: "Vitamins", price: 18.99, icon: "👩", form: "With Iron, Biotin, Folate & Calcium • 120 Tabs" },
+            { id: 92, name: "Multivitamin 50+ Senior Silver Formula", cat: "Vitamins", price: 19.99, icon: "🧓", form: "Lutein, Lycopene & Heart/Brain Support • 120 Tabs" },
+            { id: 93, name: "Prenatal Complete + DHA Softgels", cat: "Vitamins", price: 23.50, icon: "🤰", form: "Methylfolate, Choline, Iron & 200mg DHA • 90 Ct" },
+            { id: 94, name: "Vitamin B12 Methylcobalamin 1000mcg", cat: "Vitamins", price: 11.99, icon: "🍒", form: "Sublingual Cherry Microlozenges • 100 Ct" },
+            { id: 95, name: "Vitamin K2 (MK-7) 100mcg + D3 5000IU", cat: "Vitamins", price: 19.50, icon: "🦴", form: "Calcium Absorption & Arterial Health • 60 Softgels" },
+            { id: 96, name: "CoQ10 Ubiquinol 200mg High Absorption", cat: "Vitamins", price: 32.99, icon: "❤️", form: "Active Antioxidant Cellular Energy • 60 Softgels" },
+            { id: 97, name: "Biotin 10,000mcg Hair, Skin & Nails", cat: "Vitamins", price: 13.99, icon: "💅", form: "Infused with Coconut Oil • 120 Softgels" },
+            { id: 98, name: "Hydrolyzed Collagen Peptides Type I & III", cat: "Vitamins", price: 26.99, icon: "✨", form: "Unflavored Grass-Fed Powder • 454g" },
+            { id: 99, name: "Calcium 600mg + Vitamin D3 800IU", cat: "Vitamins", price: 12.25, icon: "🥛", form: "Bone Density Support Coated Caplets • 150 Ct" },
+            { id: 100, name: "Potassium Gluconate 595mg (99mg Elem.)", cat: "Vitamins", price: 8.50, icon: "🍌", form: "Electrolyte & Muscle Cramp Balance • 100 Tabs" },
+            { id: 101, name: "Selenium 200mcg Yeast-Free Capsules", cat: "Vitamins", price: 9.75, icon: "🛡️", form: "Thyroid & Antioxidant Trace Mineral • 100 Caps" },
+            { id: 102, name: "Lutein 20mg + Zeaxanthin 4mg Vision", cat: "Vitamins", price: 18.25, icon: "👁️", form: "Macular & Blue Light Eye Filter • 60 Softgels" },
+            { id: 103, name: "Ashwagandha KSM-66 Root Extract 600mg", cat: "Vitamins", price: 19.99, icon: "🌿", form: "Cortisol & Stress Adaptogen • 90 Veg Caps" },
+            { id: 104, name: "Elderberry + Vitamin C & Zinc Gummies", cat: "Vitamins", price: 15.99, icon: "🫐", form: " Sambucus Nigra Immune Support • 90 Gummies" },
+            { id: 105, name: "Krill Oil 1000mg Antarctic Astaxanthin", cat: "Vitamins", price: 27.50, icon: "🦐", form: "Phospholipid Omega-3 No Fishy Burps • 60 Softgels" },
+            { id: 106, name: "Flaxseed Oil 1000mg Cold-Pressed", cat: "Vitamins", price: 13.50, icon: "🌱", form: "Plant-Based ALA Omega-3-6-9 • 120 Softgels" },
+            { id: 107, name: "Folic Acid 800mcg (L-Methylfolate)", cat: "Vitamins", price: 10.99, icon: "🧬", form: "Bioavailable Folate Prenatal & Heart • 120 Tabs" },
+            { id: 108, name: "Vitamin E 400IU Mixed Tocopherols", cat: "Vitamins", price: 13.25, icon: "🌻", form: "Natural d-Alpha Antioxidant • 100 Softgels" },
+            { id: 109, name: "Vitamin A 10,000IU Retinyl Palmitate", cat: "Vitamins", price: 8.99, icon: "🥕", form: "Retina & Epithelial Tissue Health • 100 Softgels" },
+            { id: 110, name: "Niacin 500mg Flush-Free (Inositol)", cat: "Vitamins", price: 14.50, icon: "💓", form: "Vitamin B3 Metabolic Support • 90 Capsules" },
+            { id: 111, name: "Vitamin B6 Pyridoxine HCl 100mg", cat: "Vitamins", price: 8.25, icon: "🧠", form: "Nervous System & Homocysteine • 100 Tablets" },
+            { id: 112, name: "Vitamin B1 Thiamine 100mg", cat: "Vitamins", price: 8.75, icon: "⚡", form: "Carbohydrate Metabolism & Nerve • 100 Tablets" },
+            { id: 113, name: "Chelated Copper 2.5mg Bisglycinate", cat: "Vitamins", price: 9.50, icon: "🔶", form: "Red Blood Cell & Collagen Cofactor • 100 Tabs" },
+            { id: 114, name: "Chromium Picolinate 500mcg", cat: "Vitamins", price: 10.25, icon: "⚖️", form: "Healthy Glucose Metabolism Support • 120 Caps" },
+            { id: 115, name: "N-Acetyl Cysteine (NAC) 600mg", cat: "Vitamins", price: 19.99, icon: "🫁", form: "Glutathione Precursor & Respiratory • 100 Caps" },
+
+            // Additional First Aid (116-135)
+            { id: 116, name: "Isopropyl Rubbing Alcohol 70% USP", cat: "First Aid", price: 3.99, icon: "🧴", form: "First Aid Antiseptic & Sanitizer • 473mL" },
+            { id: 117, name: "Povidone-Iodine 10% Antiseptic Solution", cat: "First Aid", price: 8.99, icon: "🧪", form: "Broad-Spectrum Surgical Scrub Prep • 237mL" },
+            { id: 118, name: "Butterfly Wound Closure Strips", cat: "First Aid", price: 6.49, icon: "🩹", form: "Sterile Suture-Style Adhesive Strips • 36 Ct" },
+            { id: 119, name: "Liquid Bandage Waterproof Skin Sealer", cat: "First Aid", price: 7.99, icon: "💧", form: "Flexible Antiseptic Brush-On Film • 9mL" },
+            { id: 120, name: "Self-Adherent Cohesive Bandage Wrap", cat: "First Aid", price: 6.99, icon: "🎗️", form: "3-Inch Non-Slip Vet/Sport Coban Wrap • 4 Rolls" },
+            { id: 121, name: "Elastic Compression Bandage with Clips", cat: "First Aid", price: 5.50, icon: "🩹", form: "4-Inch Heavy Duty Woven ACE Wrap • 2 Pack" },
+            { id: 122, name: "Sterile Saline Wound Wash Spray", cat: "First Aid", price: 7.99, icon: "💦", form: "0.9% Sodium Chloride Pressurized Irrigation • 210mL" },
+            { id: 123, name: "Non-Adherent Telfa Sterile Pads 3x4\"", cat: "First Aid", price: 7.25, icon: "🧻", form: "Ouchless Burn & Sutured Wound Dressing • 20 Ct" },
+            { id: 124, name: "Hydrocolloid Blister & Wound Cushions", cat: "First Aid", price: 8.99, icon: "🩹", form: "Waterproof Multi-Day Healing Gel Pads • 10 Ct" },
+            { id: 125, name: "Surgical Nitrile Exam Gloves (Powder-Free)", cat: "First Aid", price: 11.99, icon: "🧤", form: "Latex-Free Medical Grade Medium/Large • 100 Ct" },
+            { id: 126, name: "Stainless Steel Splinter Tweezers & Scissors", cat: "First Aid", price: 9.50, icon: "✂️", form: "Fine-Point Forceps + Lister Bandage Shears" },
+            { id: 127, name: "Styptic Pencil Hemostatic Blood Stopper", cat: "First Aid", price: 3.75, icon: "✏️", form: "Aluminum Sulfate Razor Nick Sealer • 10g" },
+            { id: 128, name: "Calamine Plus Anti-Itch Lotion", cat: "First Aid", price: 6.50, icon: "🌸", form: "Poison Ivy, Oak, Sumac & Insect Drying • 177mL" },
+            { id: 129, name: "Bacitracin Zinc First Aid Ointment", cat: "First Aid", price: 6.25, icon: "🧴", form: "Neomycin-Free Infection Prevention • 28g" },
+            { id: 130, name: "Moleskin Plus Padded Friction Roll", cat: "First Aid", price: 5.99, icon: "🦶", form: "Cut-to-Size Flannel Blister Protection • 3 Strips" },
+            { id: 131, name: "Sterile Eye Wash Cup & Isotonic Solution", cat: "First Aid", price: 8.50, icon: "👁️", form: "Emergency Foreign Debris Flush • 118mL" },
+            { id: 132, name: "QuickClot Hemostatic Gauze Sponge", cat: "First Aid", price: 19.99, icon: "🩸", form: "Kaolin Clotting Factor Trauma Dressing • 2 Pack" },
+            { id: 133, name: "CPR Pocket Resuscitation Mask w/ Valve", cat: "First Aid", price: 12.99, icon: "🫁", form: "One-Way Filter Barrier + Hard Clam Case" },
+            { id: 134, name: "Emergency Thermal Mylar Blanket (4-Pack)", cat: "First Aid", price: 8.99, icon: "🛡️", form: "90% Body Heat Retention Shock Blankets" },
+            { id: 135, name: "Alcohol Prep Pads Sterile 2-Ply (200 Ct)", cat: "First Aid", price: 5.99, icon: "🧽", form: "70% Isopropyl Antiseptic Injection Wipes" },
+
+            // Additional Digestive (136-155)
+            { id: 136, name: "Famotidine 20mg Maximum Strength", cat: "Digestive", price: 11.99, icon: "💊", form: "12-Hour H2-Blocker Acid Reducer • 50 Tablets" },
+            { id: 137, name: "Esomeprazole Magnesium 20mg", cat: "Digestive", price: 22.99, icon: "💊", form: "24-Hour Frequent Heartburn PPI • 42 Capsules" },
+            { id: 138, name: "Lansoprazole 15mg Delayed-Release", cat: "Digestive", price: 20.50, icon: "💊", form: "Proton Pump Acid Inhibitor • 42 Capsules" },
+            { id: 139, name: "Polyethylene Glycol 3350 Osmotic Powder", cat: "Digestive", price: 16.99, icon: "🫙", form: "Unflavored Grit-Free Gentle Laxative • 510g" },
+            { id: 140, name: "Senna Natural Vegetable Laxative 8.6mg", cat: "Digestive", price: 8.50, icon: "🌿", form: "Standardized Sennosides Overnight • 100 Tabs" },
+            { id: 141, name: "Senna-S (Sennosides + Docusate Sodium)", cat: "Digestive", price: 11.25, icon: "💊", form: "Dual Action Laxative + Stool Softener • 60 Tabs" },
+            { id: 142, name: "Lactase Enzyme 9000 FCC Units", cat: "Digestive", price: 13.99, icon: "🥛", form: "Fast-Acting Dairy Digestion Caplets • 60 Foil Pkts" },
+            { id: 143, name: "Alpha-Galactosidase Bean & Veggie Enzyme", cat: "Digestive", price: 11.50, icon: "🥦", form: "Prevents Complex Carb Bloating & Gas • 75 Tabs" },
+            { id: 144, name: "Activated Charcoal 520mg Capsules", cat: "Digestive", price: 9.99, icon: "⚫", form: "Coconut Shell Derived Gas Adsorbent • 100 Caps" },
+            { id: 145, name: "Saccharomyces Boulardii 10B Probiotic", cat: "Digestive", price: 21.50, icon: "🦠", form: "Traveler's & Antibiotic Gut Flora Support • 60 Caps" },
+            { id: 146, name: "Oral Rehydration Salts (ORS) Packets", cat: "Digestive", price: 12.99, icon: "💧", form: "WHO Formula Glucose-Electrolyte • 12 Citrus Pkts" },
+            { id: 147, name: "Glycerin Suppositories Adult Laxative", cat: "Digestive", price: 6.75, icon: "💧", form: "15-Minute Hyperosmotic Relief • 25 Suppositories" },
+            { id: 148, name: "Saline Enema Ready-to-Use Twin Pack", cat: "Digestive", price: 5.99, icon: "🧴", form: "Sodium Phosphate lubricated Comfort Tip • 2x133mL" },
+            { id: 149, name: "Phenylephrine Hemorrhoidal Ointment", cat: "Digestive", price: 10.99, icon: "🧴", form: "Swelling & Itch Relief w/ Applicator • 57g" },
+            { id: 150, name: "Witch Hazel Medicated Cooling Pads", cat: "Digestive", price: 7.99, icon: "🌿", form: "50% Witch Hazel Hemorrhoidal & Perineal • 100 Pads" },
+            { id: 151, name: "Dimenhydrinate 50mg Motion Sickness", cat: "Digestive", price: 6.25, icon: "🚢", form: "Original Formula Nausea & Vertigo • 24 Tablets" },
+            { id: 152, name: "Ginger Root 550mg Anti-Nausea Caps", cat: "Digestive", price: 9.50, icon: "🫚", form: "Non-Drowsy Stomach Soothing Botanical • 100 Caps" },
+            { id: 153, name: "Enteric Coated Peppermint Oil Gels", cat: "Digestive", price: 15.50, icon: "🌱", form: "IBS & Abdominal Spasm Comfort • 60 Softgels" },
+            { id: 154, name: "Sodium Alginate Reflux Raft Chewables", cat: "Digestive", price: 16.99, icon: "🛡️", form: "Foaming Barrier Post-Meal Acid Guard • 60 Tabs" },
+            { id: 155, name: "Magnesium Hydroxide Milk of Magnesia", cat: "Digestive", price: 7.99, icon: "🥛", form: "Saline Laxative & Antacid Cherry • 355mL" },
+
+            // ==================== NEW DEPARTMENT 6: COLD, FLU & RESPIRATORY (IDs 156–185) ====================
+            { id: 156, name: "Guaifenesin 600mg Extended-Release", cat: "Cold, Flu & Respiratory", price: 15.99, icon: "🫁", form: "12-Hour Chest Congestion Expectorant • 40 Bi-Layer Tabs" },
+            { id: 157, name: "Guaifenesin + Dextromethorphan DM", cat: "Cold, Flu & Respiratory", price: 17.50, icon: "🫁", form: "12Hr Cough Suppressant & Mucus Thinner • 40 Tabs" },
+            { id: 158, name: "Dextromethorphan Polistirex 12Hr Liquid", cat: "Cold, Flu & Respiratory", price: 13.99, icon: "🥄", form: "Extended-Release Orange Cough Syrup • 148mL" },
+            { id: 159, name: "Daytime Severe Cold & Flu LiquiCaps", cat: "Cold, Flu & Respiratory", price: 11.49, icon: "☀️", form: "Non-Drowsy Acetaminophen/Phenylephrine/DXM • 24 Ct" },
+            { id: 160, name: "Nighttime Severe Cold & Flu Liquid", cat: "Cold, Flu & Respiratory", price: 11.49, icon: "🌙", form: "Cherry Fever, Sore Throat & Cough Syrup • 354mL" },
+            { id: 161, name: "Medicated Hot Lemon Flu Therapy Packets", cat: "Cold, Flu & Respiratory", price: 10.99, icon: "🍋", form: "Dissolvable Warming Sinus & Fever Drink • 12 Pkts" },
+            { id: 162, name: "Benzocaine + Menthol Sore Throat Spray", cat: "Cold, Flu & Respiratory", price: 7.99, icon: "🍒", form: "Instant Numbing Cherry Throat Mist • 177mL" },
+            { id: 163, name: "Phenol 1.4% Antiseptic Throat Spray", cat: "Cold, Flu & Respiratory", price: 7.50, icon: "💨", form: "Sugar-Free Oral Pain & Irritation Spray • 177mL" },
+            { id: 164, name: "Zinc Gluconate Cold Shortening Lozenges", cat: "Cold, Flu & Respiratory", price: 9.99, icon: "🍬", form: "13.3mg Zinc Homeopathic Cherry Drops • 25 Ct" },
+            { id: 165, name: "Oscillococcinum Flu-Like Symptom Pellets", cat: "Cold, Flu & Respiratory", price: 18.99, icon: "🧪", form: "Quick-Dissolve Sublingual Dose Tubes • 12 Doses" },
+            { id: 166, name: "Personal Cool Mist Ultrasonic Inhaler", cat: "Cold, Flu & Respiratory", price: 34.99, icon: "🌬️", form: "Handheld Mesh Nebulizer for Saline & Steam" },
+            { id: 167, name: "Sterile 0.9% Inhalation Saline Vials", cat: "Cold, Flu & Respiratory", price: 12.50, icon: "💧", form: "Unit-Dose 3mL Nebulizer Ampoules • 30 Vials" },
+            { id: 168, name: "Hypertonic 3% Nebulizer Saline Solution", cat: "Cold, Flu & Respiratory", price: 15.99, icon: "🌊", form: "Airway Mucus Clearance 4mL Vials • 25 Ct" },
+            { id: 169, name: "Warm Steam Vaporizer w/ Medicine Cup", cat: "Cold, Flu & Respiratory", price: 24.99, icon: "♨️", form: "1.5-Gallon Nightlight Bedroom Humidifier" },
+            { id: 170, name: "Eucalyptus & Camphor Inhalant Liquid", cat: "Cold, Flu & Respiratory", price: 6.99, icon: "🌿", form: "Aromatherapy Steam Vaporizer Additive • 118mL" },
+            { id: 171, name: "Menthol Nasal Inhaler Stick (Twin Pack)", cat: "Cold, Flu & Respiratory", price: 5.50, icon: "❄️", form: "Pocket Soothing Vapors Decongestant Tubes" },
+            { id: 172, name: "Pelargonium Sidoides Bronchial Syrup", cat: "Cold, Flu & Respiratory", price: 13.50, icon: "🌸", form: "Umcka Root Non-Drowsy Recovery Syrup • 120mL" },
+            { id: 173, name: "Manuka Honey MGO 400+ Throat Lozenges", cat: "Cold, Flu & Respiratory", price: 14.50, icon: "🍯", form: "New Zealand Manuka + Propolis & Lemon • 20 Ct" },
+            { id: 174, name: "English Ivy Leaf Chest Syrup (Sugar-Free)", cat: "Cold, Flu & Respiratory", price: 11.99, icon: "🍃", form: "Natural Mucus Clearing Herbal Syrup • 150mL" },
+            { id: 175, name: "Sinus Pressure & Pain Daytime Caplets", cat: "Cold, Flu & Respiratory", price: 9.99, icon: "💆", form: "Acetaminophen 325mg + Phenylephrine 5mg • 24 Ct" },
+            { id: 176, name: "Coricidin HBP High Blood Pressure Cold", cat: "Cold, Flu & Respiratory", price: 12.99, icon: "❤️", form: "Decongestant-Free Cold & Cough • 24 Tablets" },
+            { id: 177, name: "Diabetic Tussin Sugar-Free Cough & Chest", cat: "Cold, Flu & Respiratory", price: 10.99, icon: "🥄", form: "Dye-Free, Sorbitol-Free & Alcohol-Free • 118mL" },
+            { id: 178, name: "Facial Steamer Sinus & Pore Inhaler", cat: "Cold, Flu & Respiratory", price: 27.99, icon: "💨", form: "Dual Cone Nasal & Facial Warm Mist Spa" },
+            { id: 179, name: "VapoShower Steamer Aromatherapy Tablets", cat: "Cold, Flu & Respiratory", price: 11.99, icon: "🚿", form: "Eucalyptus, Peppermint & Menthol • 12 Fizz Tabs" },
+            { id: 180, name: "Peak Flow Meter Expiratory Lung Monitor", cat: "Cold, Flu & Respiratory", price: 19.50, icon: "📊", form: "60-800 L/min Asthma Zone Indicator" },
+            { id: 181, name: "Valved Holding Chamber Inhaler Spacer", cat: "Cold, Flu & Respiratory", price: 22.99, icon: "🫁", form: "Anti-Static MDI Chamber w/ Silicone Mask" },
+            { id: 182, name: "Incentive Spirometer Deep Breathing Exerciser", cat: "Cold, Flu & Respiratory", price: 14.99, icon: "🌬️", form: "5000mL Volumetric Lung Capacity Trainer" },
+            { id: 183, name: "Nasal Aspirator Bulb + Saline Drops Kit", cat: "Cold, Flu & Respiratory", price: 8.50, icon: "💧", form: "Gentle Suction Mucus Extractor & 30mL Mist" },
+            { id: 184, name: "Slippery Elm & Marshmallow Root Throat Tea", cat: "Cold, Flu & Respiratory", price: 7.99, icon: "🍵", form: "Organic Demulcent Vocal & Pharynx Tea • 20 Bags" },
+            { id: 185, name: "KN95 5-Layer Particulate Respirator Masks", cat: "Cold, Flu & Respiratory", price: 14.99, icon: "😷", form: "Individually Wrapped Breathable White • 25 Pack" },
+
+            // ==================== NEW DEPARTMENT 7: DERMATOLOGY & SKINCARE (IDs 186–215) ====================
+            { id: 186, name: "Adapalene 0.1% Retinoid Acne Gel", cat: "Dermatology & Skincare", price: 16.99, icon: "✨", form: "Once-Daily Pore-Clearing Retinoid • 45g" },
+            { id: 187, name: "Benzoyl Peroxide 10% Acne Foaming Wash", cat: "Dermatology & Skincare", price: 11.99, icon: "🫧", form: "Maximum Strength Face & Body Wash • 156g" },
+            { id: 188, name: "Salicylic Acid 2% BHA Clarifying Toner", cat: "Dermatology & Skincare", price: 13.50, icon: "🧴", form: "Alcohol-Free Blackhead & Blemish Liquid • 118mL" },
+            { id: 189, name: "Hydrocolloid Pimple Patches (72 Count)", cat: "Dermatology & Skincare", price: 9.99, icon: "⚪", form: "Ultra-Thin Invisible Overnight Spot Dots" },
+            { id: 190, name: "Ceramide Daily Moisturizing Cream Tub", cat: "Dermatology & Skincare", price: 17.99, icon: "🏺", form: "3 Essential Ceramides + Hyaluronic Acid • 453g" },
+            { id: 191, name: "Colloidal Oatmeal 1% Eczema Therapy Cream", cat: "Dermatology & Skincare", price: 14.50, icon: "🌾", form: "Steroid-Free Itch & Flare Barrier • 206g" },
+            { id: 192, name: "Clotrimazole 1% Antifungal Cream", cat: "Dermatology & Skincare", price: 8.99, icon: "🧴", form: "Cures Athlete's Foot, Jock Itch & Ringworm • 30g" },
+            { id: 193, name: "Terbinafine HCl 1% Antifungal Cream", cat: "Dermatology & Skincare", price: 13.99, icon: "🦶", form: "1-Week Prescription Strength Cure • 30g" },
+            { id: 194, name: "Tolnaftate 1% Antifungal Foot Powder", cat: "Dermatology & Skincare", price: 7.99, icon: "👟", form: "Moisture-Absorbing Odor & Fungus Guard • 127g" },
+            { id: 195, name: "Ketoconazole 1% Anti-Dandruff Shampoo", cat: "Dermatology & Skincare", price: 15.99, icon: "🚿", form: "Controls Flaking, Scaling & Scalp Itch • 200mL" },
+            { id: 196, name: "Selenium Sulfide 1% Medicated Scalp Wash", cat: "Dermatology & Skincare", price: 10.50, icon: "🧴", form: "Seborrheic Dermatitis & Tinea Versicolor • 325mL" },
+            { id: 197, name: "Coal Tar 0.5% Psoriasis Therapeutic Shampoo", cat: "Dermatology & Skincare", price: 9.99, icon: "🧴", form: "Slows Scalp Cell Overproduction • 250mL" },
+            { id: 198, name: "Salicylic Acid 3% Psoriasis & Scale Cream", cat: "Dermatology & Skincare", price: 12.99, icon: "🧴", form: "Keratolytic Plaque Softening Emollient • 113g" },
+            { id: 199, name: "Minoxidil 5% Hair Regrowth Foam", cat: "Dermatology & Skincare", price: 28.99, icon: "💆", form: "Unscented Topical Aerosol • 2-Month Supply" },
+            { id: 200, name: "Docosanol 10% Cold Sore Fever Blister Cream", cat: "Dermatology & Skincare", price: 18.50, icon: "💋", form: "Shortens Lip Healing Time • 2g Pump Tube" },
+            { id: 201, name: "Salicylic Acid 40% Plantar Wart Disks", cat: "Dermatology & Skincare", price: 8.99, icon: "🩹", form: "Medicated Cushion Pads for Foot Warts • 14 Ct" },
+            { id: 202, name: "Cryogenic Wart Freeze Aerosol Kit", cat: "Dermatology & Skincare", price: 16.99, icon: "❄️", form: "Doctor-Style Dimethyl Ether Applicator • 12 Treatments" },
+            { id: 203, name: "Medical Grade Silicone Scar Gel + SPF 30", cat: "Dermatology & Skincare", price: 21.99, icon: "✨", form: "Flattens Surgical, Burn & Acne Scars • 20g" },
+            { id: 204, name: "Reusable Silicone Scar Therapy Sheets", cat: "Dermatology & Skincare", price: 19.50, icon: "🩹", form: "Washable Keloid & C-Section Strips • 4 Sheets" },
+            { id: 205, name: "Zinc Oxide 20% + Titanium Mineral SPF 50", cat: "Dermatology & Skincare", price: 15.99, icon: "☀️", form: "Broad-Spectrum Sensitive Skin Sunscreen • 148mL" },
+            { id: 206, name: "Urea 20% + Lactic Acid Cracked Heel Balm", cat: "Dermatology & Skincare", price: 11.99, icon: "🦶", form: "Intensive Callus & Hyperkeratosis Repair • 113g" },
+            { id: 207, name: "Ammonium Lactate 12% Keratosis Pilaris Lotion", cat: "Dermatology & Skincare", price: 14.99, icon: "🧴", form: "Alpha-Hydroxy Rough & Bumpy Skin Lotion • 226g" },
+            { id: 208, name: "Permethrin 1% Lice Treatment Creme Rinse", cat: "Dermatology & Skincare", price: 17.50, icon: "🪮", form: "Kills Lice & Eggs + Stainless Nit Comb • 118mL" },
+            { id: 209, name: "Hypochlorous Acid 0.02% Facial Rescue Mist", cat: "Dermatology & Skincare", price: 14.00, icon: "💦", form: "Rosacea, Eczema & Post-Procedure Spray • 120mL" },
+            { id: 210, name: "Panthenol 5% + Centella Cica Repair Balm", cat: "Dermatology & Skincare", price: 15.50, icon: "🌿", form: "Compromised Skin Barrier Soothing Paste • 100mL" },
+            { id: 211, name: "Aluminum Chloride 15% Clinical Antiperspirant", cat: "Dermatology & Skincare", price: 13.99, icon: "💧", form: "72-Hour Hyperhidrosis Sweat Control Roll-On • 50mL" },
+            { id: 212, name: "Sulfur 10% Medicated Acne & Rosacea Soap", cat: "Dermatology & Skincare", price: 7.50, icon: "🧼", form: "Antimicrobial & Sebum-Controlling Bar • 113g" },
+            { id: 213, name: "Petrolatum 41% Healing Ointment Protectant", cat: "Dermatology & Skincare", price: 10.99, icon: "🫙", form: "Chapped Lips, Tattoo & Dry Skin Barrier • 198g" },
+            { id: 214, name: "Arnica + Vitamin K Dark Circle & Bruise Cream", cat: "Dermatology & Skincare", price: 14.99, icon: "🧴", form: "Capillary Strengthening Phytonadione • 56g" },
+            { id: 215, name: "Tea Tree & Salicylic Scalp Relief Serum", cat: "Dermatology & Skincare", price: 12.50, icon: "🌿", form: "Leave-In Itchy Flaky Scalp Dropper • 60mL" },
+
+            // ==================== NEW DEPARTMENT 8: EYE & EAR CARE (IDs 216–235) ====================
+            { id: 216, name: "Carboxymethylcellulose 0.5% Artificial Tears", cat: "Eye & Ear Care", price: 11.99, icon: "👁️", form: "Lubricant Dry Eye Drops Multi-Dose • 15mL" },
+            { id: 217, name: "Preservative-Free Single-Use Tear Vials", cat: "Eye & Ear Care", price: 16.99, icon: "💧", form: "Sensitive & Lasik Post-Op Eye Vials • 30x0.4mL" },
+            { id: 218, name: "Sodium Hyaluronate 0.2% Intensive Gel Drops", cat: "Eye & Ear Care", price: 15.50, icon: "👁️", form: "Long-Lasting Severe Dry Eye Relief • 10mL" },
+            { id: 219, name: "Brimonidine Tartrate 0.025% Redness Drops", cat: "Eye & Ear Care", price: 19.99, icon: "✨", form: "1-Minute Whitening Without Rebound • 7.5mL" },
+            { id: 220, name: "Sterile Nighttime Lubricant Eye Ointment", cat: "Eye & Ear Care", price: 12.99, icon: "🌙", form: "Mineral Oil & White Petrolatum PM Tube • 3.5g" },
+            { id: 221, name: "Multi-Purpose Contact Lens Solution Twin", cat: "Eye & Ear Care", price: 15.99, icon: "🔍", form: "Rinses, Disinfects & Stores Soft Lenses • 2x300mL" },
+            { id: 222, name: "Hydrogen Peroxide 3% Clear Lens Care System", cat: "Eye & Ear Care", price: 17.50, icon: "🫧", form: "Preservative-Free Deep Clean + Disc Case • 355mL" },
+            { id: 223, name: "Contact Lens Rewetting & Comfort Drops", cat: "Eye & Ear Care", price: 8.99, icon: "💧", form: "Moisturizes RGP & Soft Lenses While Wearing • 15mL" },
+            { id: 224, name: "Tea Tree Oil Eyelid & Lash Cleansing Wipes", cat: "Eye & Ear Care", price: 14.50, icon: "🧻", form: "Blepharitis, Demodex & Stye Lid Hygiene • 30 Wipes" },
+            { id: 225, name: "Hypochlorous 0.02% Eyelid & Lash Spray", cat: "Eye & Ear Care", price: 16.00, icon: "💨", form: "No-Rinse Daily Margin Cleanser • 60mL" },
+            { id: 226, name: "Microwavable Moist Heat Eye Compress Mask", cat: "Eye & Ear Care", price: 18.99, icon: "😌", form: "Unblocks Meibomian Glands & Styes • Washable Cover" },
+            { id: 227, name: "Sodium Chloride 5% Hypertonicity Eye Drops", cat: "Eye & Ear Care", price: 14.99, icon: "👁️", form: "Temporary Corneal Edema Fluid Draw • 15mL" },
+            { id: 228, name: "Stye Sterile Lubricant Ophthalmic Ointment", cat: "Eye & Ear Care", price: 10.99, icon: "🧴", form: "Burning, Stinging & Bump Eyelid Relief • 3.5g" },
+            { id: 229, name: "Carbamide Peroxide 6.5% Earwax Removal Kit", cat: "Eye & Ear Care", price: 9.99, icon: "👂", form: "Foaming Drops + Soft Rubber Bulb Syringe • 15mL" },
+            { id: 230, name: "Isopropyl Alcohol 95% Swimmer's Ear Drops", cat: "Eye & Ear Care", price: 7.49, icon: "🏊", form: "Dries Water-Clogged Ear Canals Fast • 30mL" },
+            { id: 231, name: "Homeopathic Earache Relief Drops (Kids/Adult)", cat: "Eye & Ear Care", price: 10.50, icon: "💧", form: "Chamomilla & Belladonna Soothing Drops • 10mL" },
+            { id: 232, name: "Tinnitus & Inner Ear Bioflavonoid Complex", cat: "Eye & Ear Care", price: 22.99, icon: "🔔", form: "Lemon Bioflavonoids, B-Vitamins & Choline • 100 Ct" },
+            { id: 233, name: "Moldable Silicone Waterproof Earplugs", cat: "Eye & Ear Care", price: 6.99, icon: "👂", form: "22dB NRR Swimming & Sleeping Putty • 6 Pairs" },
+            { id: 234, name: "High-Density Foam Noise Reduction Earplugs", cat: "Eye & Ear Care", price: 8.50, icon: "🔇", form: "33dB NRR Ultra-Soft Tapered • 50 Pairs" },
+            { id: 235, name: "Acupressure Wristbands for Motion & Vertigo", cat: "Eye & Ear Care", price: 9.99, icon: "⌚", form: "Drug-Free Nei-Kuan Point Sea-Bands • 1 Pair" },
+
+            // ==================== NEW DEPARTMENT 9: ORAL & DENTAL CARE (IDs 236–255) ====================
+            { id: 236, name: "Potassium Nitrate 5% Sensitive Toothpaste", cat: "Oral & Dental Care", price: 7.99, icon: "🦷", form: "Enamel Repair + Sodium Fluoride • 113g" },
+            { id: 237, name: "Stannous Fluoride 0.454% Gum Detox Paste", cat: "Oral & Dental Care", price: 8.49, icon: "🪥", form: "Antigingivitis & Plaque Neutralizing • 116g" },
+            { id: 238, name: "Cetylpyridinium Chloride Antiseptic Rinse", cat: "Oral & Dental Care", price: 9.50, icon: "🌿", form: "Alcohol-Free Clinical Gingivitis Mouthwash • 1L" },
+            { id: 239, name: "Xylitol & Enzyme Dry Mouth Moisturizing Rinse", cat: "Oral & Dental Care", price: 11.99, icon: "💧", form: "pH-Balanced Saliva Substitute • 473mL" },
+            { id: 240, name: "Dry Mouth Moisturizing Oral Gel Tube", cat: "Oral & Dental Care", price: 10.50, icon: "🧴", form: "Long-Lasting Nighttime Xerostomia Comfort • 42g" },
+            { id: 241, name: "Xylitol Adhering Dry Mouth Night Melts", cat: "Oral & Dental Care", price: 12.99, icon: "🍬", form: "Time-Release Gum-Line Discs Mint • 40 Ct" },
+            { id: 242, name: "Benzocaine 20% Maximum Toothache Gel", cat: "Oral & Dental Care", price: 7.99, icon: "⚡", form: "Instant Cavity, Gum & Brace Pain Numbing • 14g" },
+            { id: 243, name: "Eugenol Clove Oil Toothache Drops Kit", cat: "Oral & Dental Care", price: 8.99, icon: "🌿", form: "85% Natural Eugenol + Cotton Pellets & Tweezers" },
+            { id: 244, name: "Hydrogen Peroxide 1.5% Oral Debriding Rinse", cat: "Oral & Dental Care", price: 8.50, icon: "🫧", form: "Canker Sore, Cheek Bite & Gum Healing • 473mL" },
+            { id: 245, name: "Canker Sore Bioadhesive Hydrogel Patches", cat: "Oral & Dental Care", price: 10.99, icon: "🩹", form: "Dissolvable Barrier Covers for Mouth Ulcers • 12 Ct" },
+            { id: 246, name: "Temporary Lost Filling & Loose Cap Cement", cat: "Oral & Dental Care", price: 6.99, icon: "🦷", form: "Zinc Oxide Ready-to-Use Dental Repair • 12 Repairs" },
+            { id: 247, name: "Orthodontic Medical Grade Bracket Wax", cat: "Oral & Dental Care", price: 4.99, icon: "🦷", form: "Mint Flavored Braces Wire Comfort • 10 Cases" },
+            { id: 248, name: "Custom-Fit Boil & Bite Bruxism Night Guard", cat: "Oral & Dental Care", price: 21.99, icon: "🌙", form: "BPA-Free Teeth Grinding Protector • 2 Guards + Case" },
+            { id: 249, name: "Effervescent Denture & Retainer Cleanser Tabs", cat: "Oral & Dental Care", price: 7.99, icon: "🫧", form: "3-Minute Antibacterial Aligners Wash • 120 Tabs" },
+            { id: 250, name: "Zinc-Free Denture Adhesive Strong Hold Cream", cat: "Oral & Dental Care", price: 8.25, icon: "🦷", form: "12-Hour Food Seal Ooze-Control Tip • 68g" },
+            { id: 251, name: "Interdental Wire Proxy Brushes (Assorted)", cat: "Oral & Dental Care", price: 6.99, icon: "🪥", form: "Tight & Wide Gap Plaque Cleaners • 36 Count" },
+            { id: 252, name: "Expanded PTFE Glide Mint Dental Floss", cat: "Oral & Dental Care", price: 7.50, icon: "🧵", form: "Shred-Resistant Tight Contact Floss • 3x44m" },
+            { id: 253, name: "Cordless Rechargeable Water Flosser Irrigator", cat: "Oral & Dental Care", price: 36.99, icon: "💦", form: "3 Pressure Modes, 300mL Tank & 4 Jet Tips" },
+            { id: 254, name: "Stainless Steel Curved Tongue Scraper Set", cat: "Oral & Dental Care", price: 7.99, icon: "👅", form: "Surgical Grade Halitosis Film Remover • 2 Pack" },
+            { id: 255, name: "Sodium Fluoride 0.05% Anticavity Rinse", cat: "Oral & Dental Care", price: 7.99, icon: "🛡️", form: "Strengthens Weakened Enamel & Roots • 532mL" },
+
+            // ==================== NEW DEPARTMENT 10: DIAGNOSTIC & MEDICAL DEVICES (IDs 256–280) ====================
+            { id: 256, name: "Upper Arm Automatic Blood Pressure Monitor", cat: "Diagnostic & Medical Devices", price: 44.99, icon: "🩺", form: "Clinically Validated AFib Detection + Wide Cuff" },
+            { id: 257, name: "Wrist Digital Blood Pressure Monitor", cat: "Diagnostic & Medical Devices", price: 32.99, icon: "⌚", form: "Compact Travel Cuff w/ 90-Reading Memory" },
+            { id: 258, name: "Fingertip Pulse Oximeter SpO2 & PR LED", cat: "Diagnostic & Medical Devices", price: 21.99, icon: "📟", form: "Blood Oxygen Saturation + Perfusion Index" },
+            { id: 259, name: "Non-Contact Infrared Forehead Thermometer", cat: "Diagnostic & Medical Devices", price: 29.99, icon: "🌡️", form: "1-Second Touchless Temporal Scan w/ Fever Alarm" },
+            { id: 260, name: "Basal Digital Ovulation Thermometer (1/100th)", cat: "Diagnostic & Medical Devices", price: 13.99, icon: "🌡️", form: "High-Precision 0.01° Fertility Tracking Probe" },
+            { id: 261, name: "Blood Glucose Monitoring Meter Starter Kit", cat: "Diagnostic & Medical Devices", price: 24.99, icon: "🩸", form: "No-Coding Meter + Lancing Device + 10 Strips" },
+            { id: 262, name: "Universal Blood Glucose Test Strips (100 Ct)", cat: "Diagnostic & Medical Devices", price: 28.50, icon: "🧪", form: "0.5μL Micro-Sample 5-Second Readout" },
+            { id: 263, name: "Sterile 30-Gauge Twist-Top Lancets (200 Ct)", cat: "Diagnostic & Medical Devices", price: 9.99, icon: "📍", form: "Ultra-Thin Tri-Bevel Tip for Minimal Pain" },
+            { id: 264, name: "Blood & Urine Ketone Reagent Strips (100 Ct)", cat: "Diagnostic & Medical Devices", price: 11.99, icon: "🧪", form: "Acetoacetic Acid Keto & Diabetic Monitoring" },
+            { id: 265, name: "10-Parameter Urinalysis Test Strips (100 Ct)", cat: "Diagnostic & Medical Devices", price: 16.99, icon: "🧪", form: "Checks Leukocytes, Nitrite, pH, Protein & Glucose" },
+            { id: 266, name: "Rapid COVID-19 & Flu A/B 3-in-1 Antigen Test", cat: "Diagnostic & Medical Devices", price: 24.99, icon: "🧬", form: "15-Minute Anterior Nasal Swab • 2 Tests" },
+            { id: 267, name: "Digital Dual-Bell Sprague Stethoscope", cat: "Diagnostic & Medical Devices", price: 22.50, icon: "🩺", form: "Adult & Pediatric Chestpiece Acoustic Tubing" },
+            { id: 268, name: "Fiber Optic Pocket Otoscope Ear Exam Scope", cat: "Diagnostic & Medical Devices", price: 29.99, icon: "🔦", form: "2.5X Magnification LED + 10 Reusable Specula" },
+            { id: 269, name: "FDA-Cleared 1-Qt Biohazard Sharps Container", cat: "Diagnostic & Medical Devices", price: 8.99, icon: "⚠️", form: "Puncture-Resistant Syringe & Lancet Disposal Box" },
+            { id: 270, name: "7-Day AM/PM Push-Button Pill Organizer", cat: "Diagnostic & Medical Devices", price: 9.99, icon: "💊", form: "14 XL Compartments Arthritis-Friendly Lids" },
+            { id: 271, name: "Stainless Blade Precision Pill Cutter & Crusher", cat: "Diagnostic & Medical Devices", price: 8.50, icon: "🔪", form: "2-in-1 V-Grip Tablet Splitter & Powder Grinder" },
+            { id: 272, name: "Smart Bluetooth Body Composition Scale", cat: "Diagnostic & Medical Devices", price: 34.99, icon: "⚖️", form: "Weight, BMI, Body Fat %, Muscle & Water Sync" },
+            { id: 273, name: "12-Panel Urine Multi-Drug Screen Cup (2 Pack)", cat: "Diagnostic & Medical Devices", price: 19.99, icon: "🧪", form: "CLIA-Waived 99% Accurate Home Test Cups" },
+            { id: 274, name: "Fecal Occult Blood (FIT) Colorectal Home Test", cat: "Diagnostic & Medical Devices", price: 18.99, icon: "🔬", form: "Immunochemical 5-Minute Stool Screen • 2 Tests" },
+            { id: 275, name: "Total Cholesterol & Lipid Panel Home Test", cat: "Diagnostic & Medical Devices", price: 26.50, icon: "❤️", form: "Fingerstick Screening Strips • 2 Complete Tests" },
+            { id: 276, name: "Thyroid TSH Rapid Screening Fingerstick Kit", cat: "Diagnostic & Medical Devices", price: 21.99, icon: "🦋", form: "Detects Elevated TSH (>5 mIU/L) • 2 Cassettes" },
+            { id: 277, name: "Iron Deficiency Ferritin Rapid Blood Test", cat: "Diagnostic & Medical Devices", price: 17.99, icon: "🩸", form: "10-Minute Anemia Ferritin Level Check • 2 Tests" },
+            { id: 278, name: "Vitamin D 25-OH Rapid Semi-Quantitative Test", cat: "Diagnostic & Medical Devices", price: 19.50, icon: "☀️", form: "Deficient/Insufficient/Sufficient Readout • 2 Tests" },
+            { id: 279, name: "Medical Alert ID Stainless Steel Bracelet", cat: "Diagnostic & Medical Devices", price: 14.99, icon: "🆔", form: "Adjustable Waterproof Silicone + Caduceus Tag" },
+            { id: 280, name: "calibrated Oral Liquid Medicine Syringe Set", cat: "Diagnostic & Medical Devices", price: 6.99, icon: "💉", form: "5mL & 10mL mL/Teaspoon Dosing + Bottle Adapter" },
+
+            // ==================== NEW DEPARTMENT 11: SLEEP, STRESS & NEURO (IDs 281–300) ====================
+            { id: 281, name: "Doxylamine Succinate 25mg Nighttime Sleep", cat: "Sleep, Stress & Neuro", price: 9.99, icon: "🌙", form: "Clinically Tested Single-Ingredient Aid • 48 Tabs" },
+            { id: 282, name: "Diphenhydramine HCl 50mg Maximum Sleep", cat: "Sleep, Stress & Neuro", price: 10.50, icon: "💤", form: "One-Per-Night Liquid Softgels • 32 Count" },
+            { id: 283, name: "Melatonin 10mg Dual-Spectrum Bi-Layer", cat: "Sleep, Stress & Neuro", price: 13.99, icon: "🌌", form: "5mg Quick-Release + 5mg Extended-Release • 60 Tabs" },
+            { id: 284, name: "Melatonin 1mg Low-Dose Gentle Sublingual", cat: "Sleep, Stress & Neuro", price: 8.99, icon: "🌙", form: "Micro-Dose Peppermint Dissolve • 120 Tablets" },
+            { id: 285, name: "Magnesium Bisglycinate 400mg Chelated", cat: "Sleep, Stress & Neuro", price: 18.99, icon: "🧘", form: "Non-Laxative Deep Sleep & Relaxation • 120 Caps" },
+            { id: 286, name: "L-Theanine 200mg Suntheanine Capsules", cat: "Sleep, Stress & Neuro", price: 16.50, icon: "🍵", form: "Non-Drowsy Alpha-Wave Calm Focus • 60 Veg Caps" },
+            { id: 287, name: "Valerian Root + Passionflower & Lemon Balm", cat: "Sleep, Stress & Neuro", price: 14.99, icon: "🌿", form: "Melatonin-Free Botanical Sleep Complex • 90 Caps" },
+            { id: 288, name: "5-HTP (5-Hydroxytryptophan) 100mg", cat: "Sleep, Stress & Neuro", price: 17.99, icon: "☀️", form: "Griffonia Seed Serotonin Precursor • 60 Caps" },
+            { id: 289, name: "GABA (Gamma-Aminobutyric Acid) 500mg", cat: "Sleep, Stress & Neuro", price: 14.50, icon: "🧠", form: "Inhibitory Neurotransmitter Calm • 100 Veg Caps" },
+            { id: 290, name: "Rhodiola Rosea 500mg (3% Rosavins)", cat: "Sleep, Stress & Neuro", price: 19.50, icon: "🏔️", form: "Mental Fatigue & Burnout Adaptogen • 60 Caps" },
+            { id: 291, name: "Lion's Mane Mushroom Fruiting Body 1000mg", cat: "Sleep, Stress & Neuro", price: 24.99, icon: "🍄", form: "30% Beta-Glucans Memory & Nerve Factor • 90 Caps" },
+            { id: 292, name: "Ginkgo Biloba 120mg Standardized Extract", cat: "Sleep, Stress & Neuro", price: 13.50, icon: "🍂", form: "24% Flavone Glycosides Cerebral Flow • 120 Caps" },
+            { id: 293, name: "Phosphatidylserine 100mg Cognitive Softgels", cat: "Sleep, Stress & Neuro", price: 25.99, icon: "🧬", form: "Cell Membrane & Recall Support • 60 Softgels" },
+            { id: 294, name: "Caffeine 200mg Mental Alertness Tablets", cat: "Sleep, Stress & Neuro", price: 7.99, icon: "⚡", form: "Equal to 2 Cups of Coffee • 80 Scored Caplets" },
+            { id: 295, name: "Lavender Essential Oil 80mg Calm Softgels", cat: "Sleep, Stress & Neuro", price: 18.50, icon: "💜", form: "Pharmaceutical Grade Oral Silexan Oil • 60 Gels" },
+            { id: 296, name: "3D Contoured Blackout Memory Foam Sleep Mask", cat: "Sleep, Stress & Neuro", price: 11.99, icon: "🕶️", form: "Zero Eye-Pressure Breathable Silk-Lined Mask" },
+            { id: 297, name: "Anti-Snoring Silicone Nasal Dilator Vents", cat: "Sleep, Stress & Neuro", price: 12.99, icon: "👃", form: "4-Size Reusable Medical Silicone Cones + Case" },
+            { id: 298, name: "Chamomile, Lavender & Valerian Bedtime Spray", cat: "Sleep, Stress & Neuro", price: 10.99, icon: "💨", form: "Aromatherapy Pillow & Linen Mist • 118mL" },
+            { id: 299, name: " Magnesium + Tart Cherry Recovery Powder", cat: "Sleep, Stress & Neuro", price: 22.50, icon: "🍒", form: "Effervescent Evening Calm Drink Mix • 240g" },
+            { id: 300, name: "SAM-e (S-Adenosyl Methionine) 400mg", cat: "Sleep, Stress & Neuro", price: 31.99, icon: "✨", form: "Enteric-Coated Mood & Joint Blister Pack • 30 Tabs" },
+
+            // ==================== NEW DEPARTMENT 12: MOBILITY & ORTHOPEDIC SUPPORTS (IDs 301–315) ====================
+            { id: 301, name: "Hinged Knee Brace w/ Dual Side Stabilizers", cat: "Mobility & Orthopedic", price: 26.99, icon: "🦵", form: "Open-Patella Gel Ring Meniscus & ACL Support" },
+            { id: 302, name: "Carpal Tunnel Wrist Splint w/ Metal Stay", cat: "Mobility & Orthopedic", price: 17.99, icon: "✋", form: "Reversible Left/Right Ergonomic Night/Day Brace" },
+            { id: 303, name: "Figure-8 Lace-Up Ankle Stabilizer Brace", cat: "Mobility & Orthopedic", price: 21.50, icon: "🦶", form: "Sprain Recovery & Lateral Inversion Guard" },
+            { id: 304, name: "Lumbar Support Lower Back Belt w/ Pulleys", cat: "Mobility & Orthopedic", price: 29.99, icon: "🏋️", form: "Breathable Mesh Sciatica & Herniated Disc Corset" },
+            { id: 305, name: "Graduated Compression Socks 20-30 mmHg", cat: "Mobility & Orthopedic", price: 18.99, icon: "🧦", form: "Medical Grade Edema, DVT & Varicose • 2 Pairs" },
+            { id: 306, name: "Plantar Fasciitis Arch Support Sleeves + Gel", cat: "Mobility & Orthopedic", price: 14.50, icon: "🦶", form: "Heel Spur Shock-Absorbing Orthotic Pair" },
+            { id: 307, name: "Lateral Epicondylitis Tennis Elbow Strap", cat: "Mobility & Orthopedic", price: 13.99, icon: "💪", form: "EVA Compression Pad Tendonitis Forearm Band" },
+            { id: 308, name: "Clavicle & Upper Back Posture Corrector", cat: "Mobility & Orthopedic", price: 19.99, icon: "🧍", form: "Adjustable Under-Clothes Thoracic Alignment" },
+            { id: 309, name: "Soft Foam Cervical Neck Collar Support", cat: "Mobility & Orthopedic", price: 15.99, icon: "🧣", form: "Contoured Whiplash & pinched Nerve Relief" },
+            { id: 310, name: "Kinesiology Therapeutic Athletic Tape (2 Rolls)", cat: "Mobility & Orthopedic", price: 12.99, icon: "🎗️", form: "Waterproof Latex-Free Pre-Cut 20 Strips/Roll" },
+            { id: 311, name: "Folding Anodized Aluminum Walking Cane", cat: "Mobility & Orthopedic", price: 24.99, icon: "🦯", form: "Height-Adjustable Ergonomic T-Grip + Pivoting Base" },
+            { id: 312, name: "Thumb Spica De Quervain's Tendonitis Splint", cat: "Mobility & Orthopedic", price: 15.50, icon: "👍", form: "Removable Aluminum Stay CMC Joint Immobilizer" },
+            { id: 313, name: "Bunion Corrector Gel Toe Separator Kit", cat: "Mobility & Orthopedic", price: 12.50, icon: "🦶", form: "Hallux Valgus Silicone Spacers & Night Splint" },
+            { id: 314, name: "Orthopedic Coccyx Memory Foam Seat Cushion", cat: "Mobility & Orthopedic", price: 28.99, icon: "💺", form: "U-Shaped Tailbone & Sciatica Pressure Relief" },
+            { id: 315, name: "Universal Breathable Arm Sling w/ Thumb Loop", cat: "Mobility & Orthopedic", price: 14.99, icon: "💪", form: "Padded Shoulder Strap Rotator Cuff & Fracture" },
+
+            // ==================== NEW DEPARTMENT 13: BABY, MATERNAL & WOMEN'S HEALTH (IDs 316–335) ====================
+            { id: 316, name: "Early Result Pregnancy Test (6 Days Sooner)", cat: "Baby, Maternal & Women's Health", price: 13.99, icon: "🤰", form: "Over 99% Accurate HCG Detection • 3 Wands" },
+            { id: 317, name: "LH Ovulation + HCG Pregnancy Combo Strips", cat: "Baby, Maternal & Women's Health", price: 18.99, icon: "🌸", form: "50 LH Fertility Strips + 20 HCG Strips" },
+            { id: 318, name: "Levonorgestrel 1.5mg Emergency Contraceptive", cat: "Baby, Maternal & Women's Health", price: 34.99, icon: "💊", form: "Single-Dose Backup Contraception within 72 Hours" },
+            { id: 319, name: "Miconazole Nitrate 1200mg 1-Day Yeast Cure", cat: "Baby, Maternal & Women's Health", price: 19.99, icon: "🌸", form: "concentrated Ovule Insert + External Itch Cream" },
+            { id: 320, name: "Miconazole 2% 3-Day Vaginal Antifungal", cat: "Baby, Maternal & Women's Health", price: 15.99, icon: "🌸", form: "3 Prefilled Applicators + Vulvar Relief Cream" },
+            { id: 321, name: "Phenazopyridine HCl 99.5mg UTI Pain Relief", cat: "Baby, Maternal & Women's Health", price: 9.99, icon: "💧", form: "Targets Urinary Burning, Urgency & Frequency • 24 Ct" },
+            { id: 322, name: "UTI Nitrite & Leukocyte Home Test Strips", cat: "Baby, Maternal & Women's Health", price: 10.50, icon: "🧪", form: "2-Minute Clean-Grip Urinary Screen • 6 Strips" },
+            { id: 323, name: "D-Mannose 1000mg + Cranberry Extract", cat: "Baby, Maternal & Women's Health", price: 18.99, icon: "🍒", form: "Urinary Tract Flush & Bladder Wall Support • 90 Caps" },
+            { id: 324, name: "Boric Acid 600mg Vaginal pH Suppositories", cat: "Baby, Maternal & Women's Health", price: 16.50, icon: "⚖️", form: "Odor & Flora Balance Intimate Capsules • 30 Ct" },
+            { id: 325, name: "Black Cohosh + Soy Isoflavones Menopause", cat: "Baby, Maternal & Women's Health", price: 19.99, icon: "🌿", form: "Estrogen-Free Hot Flash & Night Sweat Relief • 60 Ct" },
+            { id: 326, name: "Pure HPA Lanolin Nipple Nursing Cream", cat: "Baby, Maternal & Women's Health", price: 11.99, icon: "🤱", form: "100% Natural Safe for Baby No-Wipe • 40g" },
+            { id: 327, name: "Organic Fenugreek & Blessed Thistle Lactation", cat: "Baby, Maternal & Women's Health", price: 17.50, icon: "🤱", form: "Breastmilk Supply Galactagogue • 90 Veg Caps" },
+            { id: 328, name: "Zinc Oxide 40% Maximum Diaper Rash Paste", cat: "Baby, Maternal & Women's Health", price: 9.99, icon: "👶", form: "Thick Overnight Moisture Seal Barrier • 113g" },
+            { id: 329, name: "Infant Simethicone 20mg Gas Relief Drops", cat: "Baby, Maternal & Women's Health", price: 9.49, icon: "🍼", form: "Dye-Free Newborn Safe w/ Oral Syringe • 30mL" },
+            { id: 330, name: "Organic Herbal Gripe Water (Fennel & Ginger)", cat: "Baby, Maternal & Women's Health", price: 11.99, icon: "🌿", form: "Colic, Hiccups & Teething Tummy Soother • 120mL" },
+            { id: 331, name: "Infant Vitamin D3 Drops 400IU (1 Drop Dose)", cat: "Baby, Maternal & Women's Health", price: 12.99, icon: "☀️", form: "Organic Fractionated Coconut Oil Base • 365 Drops" },
+            { id: 332, name: "Chamomile & Clove Benzocaine-Free Teething Gel", cat: "Baby, Maternal & Women's Health", price: 8.99, icon: "🦷", form: "Day & Night Cooling Gum Gel Combo • 2x15g" },
+            { id: 333, name: "Pediatric Electrolyte Freezer Pops (16 Pack)", cat: "Baby, Maternal & Women's Health", price: 8.50, icon: "🍧", form: "Hydration Restoring Assorted Fruit Ice Pops" },
+            { id: 334, name: "Postpartum Perineal Cooling Foam + Witch Hazel", cat: "Baby, Maternal & Women's Health", price: 14.99, icon: "❄️", form: "No-Touch Pump Maternity Recovery Foam • 150mL" },
+            { id: 335, name: "Inositol (Myo & D-Chiro 40:1) Hormone Balance", cat: "Baby, Maternal & Women's Health", price: 24.99, icon: "🌸", form: "2050mg Ovarian & Cycle Regularity • 120 Caps" },
+
+            // ==================== NEW DEPARTMENT 14: SMOKING CESSATION & WEIGHT WELLNESS (IDs 336–343) ====================
+            { id: 336, name: "Nicotine Polacrilex 4mg Coated Gum (100 Ct)", cat: "Smoking Cessation & Wellness", price: 32.99, icon: "🚭", form: "Ice Mint Craving Control (First Cig <30 Mins)" },
+            { id: 337, name: "Nicotine Polacrilex 2mg Coated Gum (100 Ct)", cat: "Smoking Cessation & Wellness", price: 32.99, icon: "🚭", form: "Original Mint Step-Down Aid (First Cig >30 Mins)" },
+            { id: 338, name: "Nicotine Transdermal Step 1 Patches (21mg)", cat: "Smoking Cessation & Wellness", price: 34.99, icon: "🩹", form: "24-Hour Clear Smart-Control Release • 14 Patches" },
+            { id: 339, name: "Nicotine Mini Lozenges 4mg Mint (81 Count)", cat: "Smoking Cessation & Wellness", price: 31.50, icon: "🍬", form: "Discreet Pocket Vial Fast Craving Relief" },
+            { id: 340, name: "Orlistat 60mg FDA-Approved Weight Loss Aid", cat: "Smoking Cessation & Wellness", price: 49.99, icon: "⚖️", form: "Blocks ~25% Dietary Fat Absorption • 60 Capsules" },
+            { id: 341, name: "Apple Cider Vinegar 1000mg + Mother Gummies", cat: "Smoking Cessation & Wellness", price: 14.99, icon: "🍎", form: "With B12, Beetroot & Pomegranate • 90 Gummies" },
+            { id: 342, name: "Glucomannan Konjac Root 1800mg Satiety Fiber", cat: "Smoking Cessation & Wellness", price: 15.99, icon: "🌱", form: "Pre-Meal Fullness & Cholesterol Fiber • 120 Caps" },
+            { id: 343, name: "Berberine HCl 1200mg + Ceylon Cinnamon", cat: "Smoking Cessation & Wellness", price: 26.99, icon: "🌿", form: "AMPK Metabolic & Glucose Activator • 90 Veg Caps" },
+
+            // ==================== NEW DEPARTMENT 15: SEXUAL HEALTH & PERSONAL CARE (IDs 344–350) ====================
+            { id: 344, name: "Ultra-Thin Lubricated Latex Condoms (36 Pack)", cat: "Sexual Health & Personal Care", price: 16.99, icon: "🛡️", form: "Electronically Tested Reservoir Tip Natural Feel" },
+            { id: 345, name: "Non-Latex Polyisoprene Sensitive Condoms", cat: "Sexual Health & Personal Care", price: 14.99, icon: "🛡️", form: "Latex-Allergy Safe Soft Stretch • 12 Count" },
+            { id: 346, name: "pH-Balanced Organic Aloe Water Lubricant", cat: "Sexual Health & Personal Care", price: 13.99, icon: "💧", form: "Glycerin-Free, Paraben-Free & Toy/Condom Safe • 148mL" },
+            { id: 347, name: "L-Arginine 1000mg + L-Citrulline Nitric Oxide", cat: "Sexual Health & Personal Care", price: 19.99, icon: "🔥", form: "Vascular Circulation & Stamina Support • 120 Tabs" },
+            { id: 348, name: "Saw Palmetto 500mg + Beta-Sitosterol Prostate", cat: "Sexual Health & Personal Care", price: 22.99, icon: "👨", form: "Healthy Urinary Flow & Prostate Support • 90 Gels" },
+            { id: 349, name: "Benzocaine 7.5% Male Desensitizing Delay Spray", cat: "Sexual Health & Personal Care", price: 18.50, icon: "💨", form: "Metered-Dose Climax Control Mist • 22mL" },
+            { id: 350, name: "Men's Maximum Absorbency Incontinence Guards", cat: "Sexual Health & Personal Care", price: 15.99, icon: "🛡️", form: "Discreet Odor-Lock Adhesive Shields • 52 Count" }
         ];
+
+        // Department Icons Map for UI
+        const categoryMeta = {
+            "All": { icon: "🏥", label: "All Products" },
+            "Pain Management": { icon: "💊", label: "Pain Management" },
+            "Allergy Relief": { icon: "🌿", label: "Allergy Relief" },
+            "Vitamins": { icon: "🍊", label: "Vitamins" },
+            "First Aid": { icon: "🩹", label: "First Aid" },
+            "Digestive": { icon: "💧", label: "Digestive" },
+            "Cold, Flu & Respiratory": { icon: "🫁", label: "Cold, Flu & Respiratory" },
+            "Dermatology & Skincare": { icon: "✨", label: "Dermatology & Skincare" },
+            "Eye & Ear Care": { icon: "👁️", label: "Eye & Ear Care" },
+            "Oral & Dental Care": { icon: "🦷", label: "Oral & Dental Care" },
+            "Diagnostic & Medical Devices": { icon: "🩺", label: "Diagnostic & Medical Devices" },
+            "Sleep, Stress & Neuro": { icon: "🌙", label: "Sleep, Stress & Neuro" },
+            "Mobility & Orthopedic": { icon: "🦵", label: "Mobility & Orthopedic" },
+            "Baby, Maternal & Women's Health": { icon: "🤰", label: "Baby, Maternal & Women's Health" },
+            "Smoking Cessation & Wellness": { icon: "🚭", label: "Smoking Cessation & Wellness" },
+            "Sexual Health & Personal Care": { icon: "🛡️", label: "Sexual Health & Personal Care" }
+        };
 
         // State Variables & Expanded Exchange Rates (Preserved Strictly)
         let cart = [];
         let discountRate = 0;
         let activeCategory = "All";
+        let currentPage = 1;
         let chatHistory = [];
 
         const rates = {
@@ -1363,10 +1771,44 @@
         window.onload = () => {
             initTheme();
             checkAuthStatus();
+            buildCategoryUI();
             renderShop("All");
             renderFeatured();
             updateShippingBanner();
         };
+
+        // Dynamically build sidebar & homepage department pills with exact counts out of 350
+        function buildCategoryUI() {
+            const counts = { "All": db.length };
+            db.forEach(item => {
+                counts[item.cat] = (counts[item.cat] || 0) + 1;
+            });
+
+            const sidebarList = document.getElementById('category-list');
+            const homePills = document.getElementById('home-category-pills');
+
+            if (sidebarList) {
+                sidebarList.innerHTML = Object.keys(categoryMeta).map(catKey => {
+                    const meta = categoryMeta[catKey];
+                    const count = counts[catKey] || 0;
+                    const isActive = catKey === activeCategory ? 'active' : '';
+                    return `<li class="${isActive}" data-cat="${catKey}" onclick="filterShop(&quot;${catKey}&quot;, this)">
+                        <span style="display:flex; align-items:center; gap:8px;"><span>${meta.icon}</span> <span>${meta.label}</span></span>
+                        <span style="font-size: 0.74rem; opacity: 0.85; font-weight: 700;">${count}</span>
+                    </li>`;
+                }).join('');
+            }
+
+            if (homePills) {
+                homePills.innerHTML = Object.keys(categoryMeta).filter(k => k !== "All").map(catKey => {
+                    const meta = categoryMeta[catKey];
+                    const count = counts[catKey] || 0;
+                    return `<div class="cat-jump-pill" onclick="jumpToCategory(&quot;${catKey}&quot;)">
+                        <span>${meta.icon}</span> ${meta.label} <span style="color: var(--text-muted); font-size: 0.78rem;">(${count})</span>
+                    </div>`;
+                }).join('');
+            }
+        }
 
         // Toast Helper (Replaces intrusive browser alerts)
         function showToast(message, isError = false) {
@@ -1400,7 +1842,7 @@
             switchView('shop');
             const items = document.querySelectorAll('#category-list li');
             items.forEach(li => {
-                if (li.innerText.includes(cat)) {
+                if (li.getAttribute('data-cat') === cat) {
                     filterShop(cat, li);
                 }
             });
@@ -1517,33 +1959,43 @@
 
         function filterShop(cat, el) {
             activeCategory = cat;
+            currentPage = 1;
             document.querySelectorAll('#category-list li').forEach(li => li.classList.remove('active'));
             if (el) el.classList.add('active');
             renderShop(cat);
         }
 
-        function handleShopFilter() {
+        function handleShopFilter(resetPage = false) {
+            if (resetPage) currentPage = 1;
             renderShop(activeCategory);
+        }
+
+        function setShopPage(page) {
+            currentPage = page;
+            renderShop(activeCategory);
+            const toolbar = document.querySelector('.shop-toolbar');
+            if (toolbar) toolbar.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function createProductCardHTML(item) {
             const convertedPrice = (item.price * curr.r).toFixed(2);
+            const formTag = item.form || "Clinically Verified • OTC";
             return `
                 <div class="card">
                     <div>
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 6px;">
                             <div class="card-icon-wrap">${item.icon}</div>
                             <span class="card-cat-badge">${item.cat}</span>
                         </div>
-                        <h4 style="font-size: 1.02rem; font-weight: 700; margin-bottom: 4px;">${item.name}</h4>
-                        <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 12px;"> Clinically Verified • In Stock</p>
+                        <h4 style="font-size: 0.98rem; font-weight: 700; margin-bottom: 6px; line-height: 1.35;">${item.name}</h4>
+                        <div class="card-form-tag">${formTag}</div>
                     </div>
                     <div style="padding-top: 10px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 10px;">
                         <div>
-                            <div style="font-size: 0.7rem; color: var(--text-muted);">Price</div>
-                            <div style="font-size: 1.2rem; font-weight: 800; color: var(--primary);">${curr.s}${convertedPrice}</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Item #${item.id}</div>
+                            <div style="font-size: 1.18rem; font-weight: 800; color: var(--primary);">${curr.s}${convertedPrice}</div>
                         </div>
-                        <button class="btn" style="width: auto; padding: 9px 15px; font-size: 0.85rem;" onclick="addToCart(${item.id}, event)">
+                        <button class="btn" style="width: auto; padding: 9px 15px; font-size: 0.84rem;" onclick="addToCart(${item.id}, event)">
                             <i class="fas fa-plus"></i> Add
                         </button>
                     </div>
@@ -1554,18 +2006,20 @@
         function renderFeatured() {
             const featuredGrid = document.getElementById('featured-grid');
             if (!featuredGrid) return;
-            // Pick 5 representative products across categories
-            const featuredIds = [1, 11, 21, 40, 42];
+            // Pick 10 diverse featured products across original and new clinical departments
+            const featuredIds = [1, 11, 21, 40, 42, 156, 186, 256, 285, 301];
             const items = db.filter(i => featuredIds.includes(i.id));
             featuredGrid.innerHTML = items.map(createProductCardHTML).join('');
         }
 
         function renderShop(cat) {
             const grid = document.getElementById('product-grid');
+            const paginationBar = document.getElementById('pagination-bar');
             if (!grid) return;
 
             const searchQuery = (document.getElementById('shop-search')?.value || '').toLowerCase().trim();
             const sortBy = document.getElementById('shop-sort')?.value || 'default';
+            const perPage = parseInt(document.getElementById('shop-per-page')?.value || '24', 10);
 
             let toRender = (cat === "All Products" || cat === "All")
                 ? [...db]
@@ -1574,7 +2028,9 @@
             if (searchQuery) {
                 toRender = toRender.filter(p =>
                     p.name.toLowerCase().includes(searchQuery) ||
-                    p.cat.toLowerCase().includes(searchQuery)
+                    p.cat.toLowerCase().includes(searchQuery) ||
+                    (p.form && p.form.toLowerCase().includes(searchQuery)) ||
+                    String(p.id) === searchQuery
                 );
             }
 
@@ -1582,21 +2038,64 @@
             if (sortBy === 'price-desc') toRender.sort((a, b) => b.price - a.price);
             if (sortBy === 'name-asc') toRender.sort((a, b) => a.name.localeCompare(b.name));
 
-            const countEl = document.getElementById('product-result-count');
-            if (countEl) countEl.innerText = `${toRender.length} Product${toRender.length === 1 ? '' : 's'}`;
+            const totalItems = toRender.length;
+            const totalPages = Math.max(1, Math.ceil(totalItems / perPage));
+            if (currentPage > totalPages) currentPage = totalPages;
 
-            if (toRender.length === 0) {
+            const startIdx = (currentPage - 1) * perPage;
+            const paginatedItems = toRender.slice(startIdx, startIdx + perPage);
+
+            const countEl = document.getElementById('product-result-count');
+            if (countEl) {
+                countEl.innerText = totalItems === 0
+                    ? `0 Products`
+                    : `Showing ${startIdx + 1}–${Math.min(startIdx + perPage, totalItems)} of ${totalItems}`;
+            }
+
+            if (totalItems === 0) {
                 grid.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: var(--card-bg); border-radius: 16px; border: 1px dashed var(--border);">
                         <i class="fas fa-prescription-bottle-medical" style="font-size: 2.5rem; color: var(--text-muted); margin-bottom: 1rem;"></i>
-                        <h4 style="font-weight: 700; margin-bottom: 4px;">No matching medications found</h4>
-                        <p style="font-size: 0.88rem; color: var(--text-muted);">Try clearing your search filter or switching categories.</p>
+                        <h4 style="font-weight: 700; margin-bottom: 4px;">No matching medications or supplies found</h4>
+                        <p style="font-size: 0.88rem; color: var(--text-muted);">Try clearing your search filter or switching clinical departments.</p>
                     </div>
                 `;
+                if (paginationBar) paginationBar.classList.add('hidden');
                 return;
             }
 
-            grid.innerHTML = toRender.map(createProductCardHTML).join('');
+            grid.innerHTML = paginatedItems.map(createProductCardHTML).join('');
+
+            // Render Pagination Controls
+            if (paginationBar) {
+                if (totalPages <= 1) {
+                    paginationBar.classList.add('hidden');
+                } else {
+                    paginationBar.classList.remove('hidden');
+                    let pageButtonsHTML = '';
+                    for (let p = 1; p <= totalPages; p++) {
+                        if (p === 1 || p === totalPages || Math.abs(p - currentPage) <= 2) {
+                            pageButtonsHTML += `<button class="page-btn ${p === currentPage ? 'active' : ''}" onclick="setShopPage(${p})">${p}</button>`;
+                        } else if (Math.abs(p - currentPage) === 3) {
+                            pageButtonsHTML += `<span style="padding: 0 4px; color: var(--text-muted);">…</span>`;
+                        }
+                    }
+                    paginationBar.innerHTML = `
+                        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">
+                            Page <strong>${currentPage}</strong> of <strong>${totalPages}</strong> (${totalItems} matching items)
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                            <button class="page-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="setShopPage(${currentPage - 1})">
+                                <i class="fas fa-chevron-left"></i> Prev
+                            </button>
+                            ${pageButtonsHTML}
+                            <button class="page-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="setShopPage(${currentPage + 1})">
+                                Next <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    `;
+                }
+            }
         }
 
         // Cart Grouping & Quantity Management Logic
